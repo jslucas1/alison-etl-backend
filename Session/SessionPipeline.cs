@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,13 +21,14 @@ namespace etl.Session
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
+            Config conf = new Config();
             IEtl worker = new SessionETL();
 
             timer = new Timer(o =>
                 {
                     if (worker.ShouldRun())
                     {
-                        worker.DoWork();
+                        worker.DoWork(conf);
                     }
                     else
                     {
@@ -35,7 +37,7 @@ namespace etl.Session
                 },
                 null,
                 TimeSpan.Zero, 
-                TimeSpan.FromSeconds(2)
+                TimeSpan.FromSeconds(3)
             );
             return Task.CompletedTask;
         }

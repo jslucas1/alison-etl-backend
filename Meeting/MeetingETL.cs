@@ -12,7 +12,7 @@ namespace etl.Meeting
     {
         private int number = 0;
 
-        public void DoWork()
+        public void DoWork(Config conf)
         {
             Console.WriteLine($"Run Meeting update logic here");
         }

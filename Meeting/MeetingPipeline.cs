@@ -20,13 +20,14 @@ namespace etl.Meeting
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
+            Config conf = new Config();
             IEtl worker = new MeetingETL();
 
             timer = new Timer(o =>
                 {
                     if (worker.ShouldRun())
                     {
-                        worker.DoWork();
+                        worker.DoWork(conf);
                     }
                     else
                     {

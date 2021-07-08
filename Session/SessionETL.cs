@@ -15,9 +15,21 @@ namespace etl.Session
     {
         private int number = 0;
 
-        public void DoWork()
+        public void DoWork(Config conf)
         {
             Console.WriteLine($"Run Session update logic here");
+            //"select * from `alison-etl`.ETLJobPipeline where Status = \"Active\""
+            
+            Database db = new Database(conf);
+
+            Console.WriteLine(db.ToString());
+
+            List<ExpandoObject> query_res = db.Select("*", "`alison-etl`.ETLJobPipeline", "Status = \"Active\"");
+
+            foreach (dynamic item in query_res)
+            {
+                Console.WriteLine(item.name);
+            }
         }
 
         public bool ShouldRun()
@@ -31,40 +43,6 @@ namespace etl.Session
 
             return false;
 
-
-
-            // ConnectionString myConnection = new ConnectionString();
-            // string cs = myConnection.cs;
-            // using var con = new MySqlConnection(cs);
-
-            // string stm = "select * from	`alison-etl`.ETLJobPipeline where Status = \"Active\"";
-
-            // List<ExpandoObject> pipelines = new List<ExpandoObject>();
-
-            // try{
-
-            // con.Open();
-            // using var cmd2 = new MySqlCommand(stm, con);
-
-
-            // using (var rdr = cmd2.ExecuteReader())
-            // {
-            //     while(rdr.Read())
-            //     {
-            //         dynamic temp = new ExpandoObject();
-            //         temp.Id = rdr.GetInt32(0);
-            //         temp.ETLJobId = rdr.GetInt32(1);
-            //         temp.PipelineId = rdr.GetInt32(2);
-            //         temp.ScheduledMinutes = rdr.GetInt32(3);
-            //         temp.LastStartDate = rdr.GetString(4);
-            //         temp.LastStartTime = rdr.GetString(5);
-            //         temp.Status = rdr.GetString(6);
-            //         pipelines.Add(temp);
-            //     }
-            // }
-            // } catch(Exception e){
-            //     Console.WriteLine(e.Message);
-            // }
         }
     }
 }
