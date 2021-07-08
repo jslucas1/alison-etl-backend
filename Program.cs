@@ -17,7 +17,6 @@ namespace etl
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices(services =>
                     services.AddHostedService<SessionPipeline>()
-                            .AddHostedService<MeetingPipeline>()
                 );
     }
 }

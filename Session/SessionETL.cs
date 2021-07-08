@@ -18,6 +18,23 @@ namespace etl.Session
     public class SessionETL : IEtl
     {
         // is it time to run the ETL based off last run data
+        // public void DoWork(Config conf)
+        // {
+        //     Console.WriteLine($"Run Session update logic here");
+        //     //"select * from `alison-etl`.ETLJobPipeline where Status = \"Active\""
+            
+        //     Database db = new Database(conf);
+
+        //     Console.WriteLine(db.ToString());
+
+        //     List<ExpandoObject> query_res = db.Select("*", "`alison-etl`.ETLJobPipeline", "Status = \"Active\"");
+
+        //     foreach (dynamic item in query_res)
+        //     {
+        //         Console.WriteLine(item.name);
+        //     }
+        // }
+
         public bool ShouldRun()
         {
 
@@ -88,6 +105,7 @@ namespace etl.Session
         // do the work for the update
         public void DoWork()
         {
+            Console.WriteLine("in the session do work");
             List<ExpandoObject> sessions = GetAllSessionsFromDB();
             List<ExpandoObject> linxData = GetLinxData();
             
