@@ -8,67 +8,142 @@ using System.Threading;
 using System.Threading.Tasks;
 using etl;
 using System.Dynamic;
+using System.IO;
+using GraphQL.Client.Http;
+using Newtonsoft.Json;
+
 
 namespace etl.Session
 {
     public class SessionETL : IEtl
     {
-        // Replace this with sql call for last run info
-        private int number = 0;
+        // is it time to run the ETL based off last run data
+        public bool ShouldRun()
+        {
+
+            ConnectionString myConnection = new ConnectionString();
+            string cs = myConnection.cs;
+            using var con = new MySqlConnection(cs);
+
+            string  stm = "select * from `alison-etl`.ETLJobPipeline a, ";
+                    stm+= "              `alison-etl`.ETLPipeline b";
+                    stm+= "         where a.Status = \"Active\" AND b.Name = \"Sessions\" AND a.PipelineId = b.Id";
+
+            List<ExpandoObject> pipelines = new List<ExpandoObject>();
+
+            try{
+
+            con.Open();
+            using var cmd2 = new MySqlCommand(stm, con);
+
+
+            using (var rdr = cmd2.ExecuteReader())
+            {
+                while(rdr.Read())
+                {
+                    dynamic temp = new ExpandoObject();
+                    temp.Id = rdr.GetInt32(0);
+                    temp.ETLJobId = rdr.GetInt32(1);
+                    temp.PipelineId = rdr.GetInt32(2);
+                    temp.ScheduledMinutes = rdr.GetInt32(3);
+                    temp.LastStartDate = rdr.GetString(4);
+                    temp.LastStartTime = rdr.GetString(5);
+                    temp.LastCompletedTime = rdr.GetString(6);
+                    temp.Status = rdr.GetString(7);
+                    pipelines.Add(temp);
+                }
+            }
+            } catch(Exception e){
+                Console.WriteLine(e.Message);
+            }
+
+            foreach(dynamic pipeline in pipelines){
+                if(pipeline.LastCompletedTime == null){
+                    return false;
+                } else {
+                    DateTime now = DateTime.Now;
+                    DateTime lastStartDate = new DateTime();
+                    if(pipeline.LastStartDate != null && pipeline.LastStartTime != null){
+                        string[] tempStartDate = pipeline.LastStartDate.Split('/');
+                        int month = int.Parse(tempStartDate[0]);
+                        int day = int.Parse(tempStartDate[1]);
+                        int year = int.Parse(tempStartDate[2]);
+                        string[] tempStartTime = pipeline.LastStartTime.Split(':');
+                        int hour = int.Parse(tempStartTime[0]);
+                        int minute = int.Parse(tempStartTime[1]);
+                        int second = Convert.ToInt32(double.Parse(tempStartTime[2]));
+
+                        lastStartDate = new DateTime(year,month,day,hour,minute, second);
+                    }
+                    TimeSpan ts = now - lastStartDate;
+                    if(ts.TotalMinutes >= pipeline.ScheduledMinutes){
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
 
         // do the work for the update
         public void DoWork()
         {
-            Console.WriteLine($"Run Session update logic here");
+            List<ExpandoObject> sessions = GetAllSessionsFromDB();
+            List<ExpandoObject> linxData = GetLinxData();
+            
         }
 
-        // is it time to run calculation base off last run data
-        public bool ShouldRun()
-        {
-            number += 1;
+        private List<ExpandoObject> GetLinxData(){
+           //List<ExpandoObject> linxData = new List<ExpandoObject>();
 
-            // fake calc for "time to run" example
-            if (number % 5 == 0)
+            string filePath = @"C:\Users\jsluc\OneDrive\Documents\Alison\Linx-Query-Response\SessionResponse.txt";
+            StreamReader inFile = new StreamReader(filePath);
+            string json = inFile.ReadToEnd();
+            //List<Session> sessions = JsonConvert.DeserializeObject<List<Session>>(json);
+            List<ExpandoObject> linxData = JsonConvert.DeserializeObject<List<ExpandoObject>>(json);
+
+            return linxData;
+        }
+
+        private List<ExpandoObject> GetAllSessionsFromDB(){
+            List<ExpandoObject> sessions = new List<ExpandoObject>();
+
+            ConnectionString myConnection = new ConnectionString();
+            string cs = myConnection.cs;
+            using var con = new MySqlConnection(cs);
+
+            string  stm = "select * from `alison`.Session Order by LinxId ASC";
+
+            try{
+
+            con.Open();
+            using var cmd2 = new MySqlCommand(stm, con);
+
+
+            using (var rdr = cmd2.ExecuteReader())
             {
-                return true;
+                while(rdr.Read())
+                {
+                    dynamic temp = new ExpandoObject();
+                    temp.Id = rdr.GetInt32(0);
+                    temp.LinxId = rdr.GetInt32(1);
+                    temp.LegislativeDays = rdr.GetInt32(2);
+                    temp.Name = rdr.GetString(3);
+                    temp.StartTime = rdr.GetString(4);
+                    temp.EndDate = rdr.GetString(5);
+                    temp.TermName = rdr.GetString(6);
+                    temp.ActiveEtlSession = rdr.GetString(7);
+                    sessions.Add(temp);
+                }
+            }
+            } catch(Exception e){
+                Console.WriteLine(e.Message);
             }
 
-            return false;
-
-
-
-            // ConnectionString myConnection = new ConnectionString();
-            // string cs = myConnection.cs;
-            // using var con = new MySqlConnection(cs);
-
-            // string stm = "select * from	`alison-etl`.ETLJobPipeline where Status = \"Active\"";
-
-            // List<ExpandoObject> pipelines = new List<ExpandoObject>();
-
-            // try{
-
-            // con.Open();
-            // using var cmd2 = new MySqlCommand(stm, con);
-
-
-            // using (var rdr = cmd2.ExecuteReader())
-            // {
-            //     while(rdr.Read())
-            //     {
-            //         dynamic temp = new ExpandoObject();
-            //         temp.Id = rdr.GetInt32(0);
-            //         temp.ETLJobId = rdr.GetInt32(1);
-            //         temp.PipelineId = rdr.GetInt32(2);
-            //         temp.ScheduledMinutes = rdr.GetInt32(3);
-            //         temp.LastStartDate = rdr.GetString(4);
-            //         temp.LastStartTime = rdr.GetString(5);
-            //         temp.Status = rdr.GetString(6);
-            //         pipelines.Add(temp);
-            //     }
-            // }
-            // } catch(Exception e){
-            //     Console.WriteLine(e.Message);
-            // }
+            return sessions;
         }
+
+
+        
     }
 }
