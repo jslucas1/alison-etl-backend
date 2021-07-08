@@ -9,23 +9,21 @@ using Microsoft.Extensions.Logging;
 
 namespace etl.Session
 {
-    public class SessionPipeline : IHostedService, IDisposable
+    public class SessionPipeline : IPipeline
     {
         private Timer timer;
 
-        // had to implement this to dispose the timer
         public void Dispose()
         {
             timer?.Dispose();
         }
 
-        // on service start
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            IEtl worker = new SessionETL(); // our worker class for the pipeline
+            IEtl worker = new SessionETL();
 
             timer = new Timer(o =>
-                { // Callback for the timer
+                {
                     if (worker.ShouldRun())
                     {
                         worker.DoWork();
@@ -35,17 +33,15 @@ namespace etl.Session
                         Console.WriteLine("Not time to work on Session");
                     }
                 },
-                null, // not sure but example said leave null
-                TimeSpan.Zero, // basically means start immediately 
-                TimeSpan.FromSeconds(2) // How often should we check for work? 
+                null,
+                TimeSpan.Zero, 
+                TimeSpan.FromSeconds(2)
             );
             return Task.CompletedTask;
         }
 
-        // on service stop 
         public Task StopAsync(CancellationToken cancellationToken)
         {
-            // just logging that the service stopped for now 
             Console.WriteLine("Printing worker stopped");
             return Task.CompletedTask;
         }

@@ -13,21 +13,17 @@ namespace etl.Session
 {
     public class SessionETL : IEtl
     {
-        // Replace this with sql call for last run info
         private int number = 0;
 
-        // do the work for the update
         public void DoWork()
         {
             Console.WriteLine($"Run Session update logic here");
         }
 
-        // is it time to run calculation base off last run data
         public bool ShouldRun()
         {
             number += 1;
 
-            // fake calc for "time to run" example
             if (number % 5 == 0)
             {
                 return true;
