@@ -166,16 +166,9 @@ namespace etl.Session
                 {
                     while (rdr.Read())
                     {
-                        // dynamic temp = new ExpandoObject();
-                        // temp.Id = rdr.GetInt32(0);
-                        // temp.LinxId = rdr.GetInt32(1);
-                        // temp.LegislativeDays = rdr.GetInt32(2);
-                        // temp.Name = rdr.GetString(3);
-                        // temp.StartTime = rdr.GetString(4);
-                        // temp.EndDate = rdr.GetString(5);
-                        // temp.TermName = rdr.GetString(6);
-                        // temp.ActiveEtlSession = rdr.GetString(7);
-                        // sessions.Add(temp);
+                        sessions.Add(new Session(){ID = rdr.GetInt32(0),LinxId = rdr.GetInt32(1),LegislativeDays = rdr.GetInt32(2),
+                                                        Name = rdr.GetString(3),StartTime = rdr.GetString(4),EndDate = rdr.GetString(5),
+                                                        TermName = rdr.GetString(6), ActiveEtlSession = rdr.GetString(7) });
                     }
                 }
             }
