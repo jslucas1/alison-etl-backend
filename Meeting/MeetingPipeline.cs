@@ -44,7 +44,7 @@ namespace etl.Meeting
 
         public Task StopAsync(CancellationToken cancellationToken)
         {
-            Console.WriteLine("Printing worker stopped");
+            Console.WriteLine("Meeting Update Worker Stopped");
             return Task.CompletedTask;
         }
 
