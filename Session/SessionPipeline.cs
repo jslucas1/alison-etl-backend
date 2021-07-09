@@ -44,7 +44,7 @@ namespace etl.Session
 
         public Task StopAsync(CancellationToken cancellationToken)
         {
-            Console.WriteLine("Printing worker stopped");
+            Console.WriteLine("Session Update Worker Stopped");
             return Task.CompletedTask;
         }
         
