@@ -121,34 +121,33 @@ namespace etl.Session
         public void DoWork()
         {
             Console.WriteLine("in the session do work");
-            List<ExpandoObject> sessions = GetAllSessionsFromDB();
+            List<Session> sessions = GetAllSessionsFromDB();
             Console.WriteLine($"{sessions.Count} Sessions Loaded");
-            foreach (dynamic item in sessions)
+            foreach (Session item in sessions)
             {
-                Console.WriteLine($"{item.Id}, {item.Name}");
+                Console.WriteLine($"{item.ID}, {item.Name}");
             }
 
             
-            //List<ExpandoObject> linxData = GetLinxData();
+            List<ExpandoObject> linxData = GetLinxData();
 
         }
 
         private List<ExpandoObject> GetLinxData()
         {
-            //List<ExpandoObject> linxData = new List<ExpandoObject>();
-
-            string filePath = @"C:\Users\jsluc\OneDrive\Documents\Alison\Linx-Query-Response\SessionResponse.txt";
+            //string filePath = @"C:\Users\jsluc\OneDrive\Documents\Alison\Linx-Query-Response\SessionResponse.txt";
+            string filePath = @"SessionResponse.txt";
             StreamReader inFile = new StreamReader(filePath);
             string json = inFile.ReadToEnd();
-            //List<Session> sessions = JsonConvert.DeserializeObject<List<Session>>(json);
             List<ExpandoObject> linxData = JsonConvert.DeserializeObject<List<ExpandoObject>>(json);
 
             return linxData;
         }
 
-        private List<ExpandoObject> GetAllSessionsFromDB()
+        private List<Session> GetAllSessionsFromDB()
         {
-            List<ExpandoObject> sessions = new List<ExpandoObject>();
+            // List<ExpandoObject> sessions = new List<ExpandoObject>();
+            List<Session> sessions = new List<Session>();
 
             ConnectionString myConnection = new ConnectionString();
             string cs = myConnection.cs;
@@ -167,16 +166,16 @@ namespace etl.Session
                 {
                     while (rdr.Read())
                     {
-                        dynamic temp = new ExpandoObject();
-                        temp.Id = rdr.GetInt32(0);
-                        temp.LinxId = rdr.GetInt32(1);
-                        temp.LegislativeDays = rdr.GetInt32(2);
-                        temp.Name = rdr.GetString(3);
-                        temp.StartTime = rdr.GetString(4);
-                        temp.EndDate = rdr.GetString(5);
-                        temp.TermName = rdr.GetString(6);
-                        temp.ActiveEtlSession = rdr.GetString(7);
-                        sessions.Add(temp);
+                        // dynamic temp = new ExpandoObject();
+                        // temp.Id = rdr.GetInt32(0);
+                        // temp.LinxId = rdr.GetInt32(1);
+                        // temp.LegislativeDays = rdr.GetInt32(2);
+                        // temp.Name = rdr.GetString(3);
+                        // temp.StartTime = rdr.GetString(4);
+                        // temp.EndDate = rdr.GetString(5);
+                        // temp.TermName = rdr.GetString(6);
+                        // temp.ActiveEtlSession = rdr.GetString(7);
+                        // sessions.Add(temp);
                     }
                 }
             }
