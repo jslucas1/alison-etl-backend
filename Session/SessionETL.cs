@@ -22,13 +22,9 @@ namespace etl.Session
         // {
         //     Console.WriteLine($"Run Session update logic here");
         //     //"select * from `alison-etl`.ETLJobPipeline where Status = \"Active\""
-
         //     Database db = new Database(conf);
-
         //     Console.WriteLine(db.ToString());
-
         //     List<ExpandoObject> query_res = db.Select("*", "`alison-etl`.ETLJobPipeline", "Status = \"Active\"");
-
         //     foreach (dynamic item in query_res)
         //     {
         //         Console.WriteLine(item.name);
@@ -83,7 +79,7 @@ namespace etl.Session
             }
             finally
             {
-                  con.Close();
+                con.Close();
             }
 
             foreach (dynamic pipeline in pipelines)
@@ -125,34 +121,38 @@ namespace etl.Session
         {
             Console.WriteLine("in the session do work");
             GetAllSessionsFromDB();
-            //Console.WriteLine($"{sessions.Count} Sessions Loaded");
+            Console.WriteLine($"{sessions.Count} Sessions Loaded");
             foreach (Session item in sessions)
             {
                 Console.WriteLine($"{item.ID}, {item.Name}");
             }
 
-            
-           GetLinxData();
-           LoadLinxTable();
+
+            //GetLinxData();
+            //LoadLinxTable();
 
 
         }
 
-        private void InsertData(){
+        private void InsertData()
+        {
             //add sql to insert records that don't exist
 
         }
 
-        private void DeleteData(){
+        private void DeleteData()
+        {
             //add sql to delete records that no longer exist
         }
 
-        private void UpdateData(){
+        private void UpdateData()
+        {
             //add sql to update records that have changed
 
         }
 
-        private void LoadLinxTable(){
+        private void LoadLinxTable()
+        {
             Console.WriteLine("About to load the linx data");
             ConnectionString myConnection = new ConnectionString();
             string cs = myConnection.cs;
@@ -169,15 +169,16 @@ namespace etl.Session
                 con.Open();
 
                 using var delCmd = new MySqlCommand(delStm, con);
-                foreach(dynamic item in linxData){
+                foreach (dynamic item in linxData)
+                {
                     using var cmd = new MySqlCommand(stm, con);
-                    cmd.Parameters.AddWithValue("@LinxId",item.id);
-                    cmd.Parameters.AddWithValue("@LegislativeDays",item.legislativeDays);
-                    cmd.Parameters.AddWithValue("@Name",item.name);
-                    cmd.Parameters.AddWithValue("@StartDate",item.startDate);
-                    cmd.Parameters.AddWithValue("@EndDate",item.endDate);
-                    cmd.Parameters.AddWithValue("@TermName",item.term.name);
-            
+                    cmd.Parameters.AddWithValue("@LinxId", item.id);
+                    cmd.Parameters.AddWithValue("@LegislativeDays", item.legislativeDays);
+                    cmd.Parameters.AddWithValue("@Name", item.name);
+                    cmd.Parameters.AddWithValue("@StartDate", item.startDate);
+                    cmd.Parameters.AddWithValue("@EndDate", item.endDate);
+                    cmd.Parameters.AddWithValue("@TermName", item.term.name);
+
                     cmd.Prepare();
                     cmd.ExecuteNonQuery();
                 }
@@ -214,24 +215,33 @@ namespace etl.Session
 
             try
             {
-
                 con.Open();
                 using var cmd2 = new MySqlCommand(stm, con);
-
-
                 using (var rdr = cmd2.ExecuteReader())
                 {
                     while (rdr.Read())
                     {
-                        sessions.Add(new Session(){ID = rdr.GetInt32(0),LinxId = rdr.GetInt32(1),LegislativeDays = rdr.GetInt32(2),
-                                                        Name = rdr.GetString(3),StartTime = rdr.GetString(4),EndDate = rdr.GetString(5),
-                                                        TermName = rdr.GetString(6), ActiveEtlSession = rdr.GetString(7) });
+                        sessions.Add(new Session()
+                        {
+                            ID = rdr.GetInt32(0),
+                            LinxId = rdr.GetInt32(1),
+                            LegislativeDays = rdr.GetInt32(2),
+                            Name = rdr.GetString(3),
+                            StartTime = rdr.GetString(4),
+                            EndDate = rdr.GetString(5),
+                            TermName = rdr.GetString(6),
+                            ActiveEtlSession = rdr.GetString(7)
+                        });
                     }
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                con.Close();
             }
 
         }
