@@ -20,14 +20,10 @@ namespace etl
 
         public Config()
         {
-            string os = Environment.OSVersion.ToString();
-
-            LoadDBConfig(os);
-            // LoadAPIConfig(os);
+            LoadDBConfig();
+            // LoadAPIConfig();
         }
-
-        // TODO: read from env
-        private void LoadDBConfig(string os)
+        private void LoadDBConfig()
         {
             this.database_server = Environment.GetEnvironmentVariable("alison_database_server");
             this.database_name = Environment.GetEnvironmentVariable("alison_database_name");
@@ -35,9 +31,7 @@ namespace etl
             this.database_username = Environment.GetEnvironmentVariable("alison_database_username");
             this.database_password = Environment.GetEnvironmentVariable("alison_database_password");
         }
-
-        // TODO: read from env
-        private void LoadAPIConfig(string os)
+        private void LoadAPIConfig()
         {
             this.api_url = Environment.GetEnvironmentVariable("alison_api_url");
             this.api_username = Environment.GetEnvironmentVariable("alison_api_username");

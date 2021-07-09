@@ -22,7 +22,7 @@ namespace etl.Session
         // {
         //     Console.WriteLine($"Run Session update logic here");
         //     //"select * from `alison-etl`.ETLJobPipeline where Status = \"Active\""
-            
+
         //     Database db = new Database(conf);
 
         //     Console.WriteLine(db.ToString());
@@ -37,50 +37,64 @@ namespace etl.Session
 
         public bool ShouldRun()
         {
-
             ConnectionString myConnection = new ConnectionString();
             string cs = myConnection.cs;
             using var con = new MySqlConnection(cs);
 
-            string  stm = "select * from `alison-etl`.ETLJobPipeline a, ";
-                    stm+= "              `alison-etl`.ETLPipeline b";
-                    stm+= "         where a.Status = \"Active\" AND b.Name = \"Sessions\" AND a.PipelineId = b.Id";
+            string stm = "select * from `alison-etl`.ETLJobPipeline a, ";
+            stm += "              `alison-etl`.ETLPipeline b";
+            stm += "         where a.Status = \"Active\" AND b.Name = \"Sessions\" AND a.PipelineId = b.Id";
 
             List<ExpandoObject> pipelines = new List<ExpandoObject>();
 
-            try{
-
-            con.Open();
-            using var cmd2 = new MySqlCommand(stm, con);
-
-
-            using (var rdr = cmd2.ExecuteReader())
+            try
             {
-                while(rdr.Read())
+                con.Open();
+                using var cmd2 = new MySqlCommand(stm, con);
+                using (var rdr = cmd2.ExecuteReader())
                 {
-                    dynamic temp = new ExpandoObject();
-                    temp.Id = rdr.GetInt32(0);
-                    temp.ETLJobId = rdr.GetInt32(1);
-                    temp.PipelineId = rdr.GetInt32(2);
-                    temp.ScheduledMinutes = rdr.GetInt32(3);
-                    temp.LastStartDate = rdr.GetString(4);
-                    temp.LastStartTime = rdr.GetString(5);
-                    temp.LastCompletedTime = rdr.GetString(6);
-                    temp.Status = rdr.GetString(7);
-                    pipelines.Add(temp);
+                    while (rdr.Read())
+                    {
+                        Console.WriteLine("Reading a Session");
+                        dynamic temp = new ExpandoObject();
+                        temp.Id = rdr.GetInt32(0);
+                        temp.ETLJobId = rdr.GetInt32(1);
+                        temp.PipelineId = rdr.GetInt32(2);
+                        temp.ScheduledMinutes = rdr.GetInt32(3);
+                        temp.LastStartDate = rdr.GetString(4);
+                        temp.LastStartTime = rdr.GetString(5);
+                        temp.LastCompletedTime = rdr.GetString(6);
+                        temp.Status = rdr.GetString(7);
+
+                        pipelines.Add(temp);
+                    }
                 }
             }
-            } catch(Exception e){
+            catch (Exception e)
+            {
+                Console.WriteLine("Loading Sessions Error");
                 Console.WriteLine(e.Message);
+                return false;
+            }
+            finally
+            {
+                  con.Close();
             }
 
-            foreach(dynamic pipeline in pipelines){
-                if(pipeline.LastCompletedTime == null){
+            foreach (dynamic pipeline in pipelines)
+            {
+                if (pipeline.LastCompletedTime == null)
+                {
                     return false;
-                } else {
+                }
+                else
+                {
                     DateTime now = DateTime.Now;
                     DateTime lastStartDate = new DateTime();
-                    if(pipeline.LastStartDate != null && pipeline.LastStartTime != null){
+                    Console.WriteLine($"Outside IF");
+                    if (pipeline.LastStartDate != null && pipeline.LastStartTime != null)
+                    {
+                        Console.WriteLine($"Inside IF");
                         string[] tempStartDate = pipeline.LastStartDate.Split('/');
                         int month = int.Parse(tempStartDate[0]);
                         int day = int.Parse(tempStartDate[1]);
@@ -90,10 +104,11 @@ namespace etl.Session
                         int minute = int.Parse(tempStartTime[1]);
                         int second = Convert.ToInt32(double.Parse(tempStartTime[2]));
 
-                        lastStartDate = new DateTime(year,month,day,hour,minute, second);
+                        lastStartDate = new DateTime(year, month, day, hour, minute, second);
                     }
                     TimeSpan ts = now - lastStartDate;
-                    if(ts.TotalMinutes >= pipeline.ScheduledMinutes){
+                    if (ts.TotalMinutes >= pipeline.ScheduledMinutes)
+                    {
                         return true;
                     }
                 }
@@ -107,12 +122,20 @@ namespace etl.Session
         {
             Console.WriteLine("in the session do work");
             List<ExpandoObject> sessions = GetAllSessionsFromDB();
-            List<ExpandoObject> linxData = GetLinxData();
+            Console.WriteLine($"{sessions.Count} Sessions Loaded");
+            foreach (dynamic item in sessions)
+            {
+                Console.WriteLine($"{item.Id}, {item.Name}");
+            }
+
             
+            //List<ExpandoObject> linxData = GetLinxData();
+
         }
 
-        private List<ExpandoObject> GetLinxData(){
-           //List<ExpandoObject> linxData = new List<ExpandoObject>();
+        private List<ExpandoObject> GetLinxData()
+        {
+            //List<ExpandoObject> linxData = new List<ExpandoObject>();
 
             string filePath = @"C:\Users\jsluc\OneDrive\Documents\Alison\Linx-Query-Response\SessionResponse.txt";
             StreamReader inFile = new StreamReader(filePath);
@@ -123,38 +146,42 @@ namespace etl.Session
             return linxData;
         }
 
-        private List<ExpandoObject> GetAllSessionsFromDB(){
+        private List<ExpandoObject> GetAllSessionsFromDB()
+        {
             List<ExpandoObject> sessions = new List<ExpandoObject>();
 
             ConnectionString myConnection = new ConnectionString();
             string cs = myConnection.cs;
             using var con = new MySqlConnection(cs);
 
-            string  stm = "select * from `alison`.Session Order by LinxId ASC";
+            string stm = "select * from `alison`.Session Order by LinxId ASC";
 
-            try{
-
-            con.Open();
-            using var cmd2 = new MySqlCommand(stm, con);
-
-
-            using (var rdr = cmd2.ExecuteReader())
+            try
             {
-                while(rdr.Read())
+
+                con.Open();
+                using var cmd2 = new MySqlCommand(stm, con);
+
+
+                using (var rdr = cmd2.ExecuteReader())
                 {
-                    dynamic temp = new ExpandoObject();
-                    temp.Id = rdr.GetInt32(0);
-                    temp.LinxId = rdr.GetInt32(1);
-                    temp.LegislativeDays = rdr.GetInt32(2);
-                    temp.Name = rdr.GetString(3);
-                    temp.StartTime = rdr.GetString(4);
-                    temp.EndDate = rdr.GetString(5);
-                    temp.TermName = rdr.GetString(6);
-                    temp.ActiveEtlSession = rdr.GetString(7);
-                    sessions.Add(temp);
+                    while (rdr.Read())
+                    {
+                        dynamic temp = new ExpandoObject();
+                        temp.Id = rdr.GetInt32(0);
+                        temp.LinxId = rdr.GetInt32(1);
+                        temp.LegislativeDays = rdr.GetInt32(2);
+                        temp.Name = rdr.GetString(3);
+                        temp.StartTime = rdr.GetString(4);
+                        temp.EndDate = rdr.GetString(5);
+                        temp.TermName = rdr.GetString(6);
+                        temp.ActiveEtlSession = rdr.GetString(7);
+                        sessions.Add(temp);
+                    }
                 }
             }
-            } catch(Exception e){
+            catch (Exception e)
+            {
                 Console.WriteLine(e.Message);
             }
 
@@ -162,6 +189,6 @@ namespace etl.Session
         }
 
 
-        
+
     }
 }
