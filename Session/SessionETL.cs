@@ -17,26 +17,6 @@ namespace etl.Session
 {
     public class SessionETL : IEtl
     {
-        // is it time to run the ETL based off last run data
-        // public void DoWork(Config conf)
-        // {
-        //     Console.WriteLine($"Run Session update logic here");
-        //     //"select * from `alison-etl`.ETLJobPipeline where Status = \"Active\""
-        //     Database db = new Database(conf);
-        //     Console.WriteLine(db.ToString());
-        //     List<ExpandoObject> query_res = db.Select("*", "`alison-etl`.ETLJobPipeline", "Status = \"Active\"");
-        //     foreach (dynamic item in query_res)
-        //     {
-        //         Console.WriteLine(item.name);
-        //     }
-        // }
-
-        private List<Session> sessions = new List<Session>();
-        private List<Session> inserts;
-        private List<Session> changes;
-        private List<Session> deletes;
-        private List<ExpandoObject> linxData;
-
         public bool ShouldRun()
         {
             ConnectionString myConnection = new ConnectionString();
@@ -116,42 +96,42 @@ namespace etl.Session
             return false;
         }
 
-        // do the work for the update
+        // is it time to run the ETL based off last run data
+        // TODO: work from the config > public void DoWork(Config conf)
         public void DoWork()
         {
             Console.WriteLine("in the session do work");
-            GetAllSessionsFromDB();
+            List<Session> sessions = GetAllSessionsFromDB();
             Console.WriteLine($"{sessions.Count} Sessions Loaded");
             foreach (Session item in sessions)
             {
                 Console.WriteLine($"{item.ID}, {item.Name}");
             }
 
-
-            //GetLinxData();
-            //LoadLinxTable();
-
-
+            List<ExpandoObject> linxData = GetLinxData();
+            LoadLinxTable(linxData);
         }
 
         private void InsertData()
         {
             //add sql to insert records that don't exist
-
+            List<Session> inserts = new List<Session>();
         }
 
         private void DeleteData()
         {
             //add sql to delete records that no longer exist
+            List<Session> deletes = new List<Session>();
         }
 
         private void UpdateData()
         {
             //add sql to update records that have changed
+            List<Session> changes = new List<Session>();
 
         }
 
-        private void LoadLinxTable()
+        private void LoadLinxTable(List<ExpandoObject> linxData)
         {
             Console.WriteLine("About to load the linx data");
             ConnectionString myConnection = new ConnectionString();
@@ -196,17 +176,27 @@ namespace etl.Session
             }
         }
 
-        private void GetLinxData()
+        private List<ExpandoObject> GetLinxData()
         {
+            List<ExpandoObject> linxData = new List<ExpandoObject>();
+
             //string filePath = @"C:\Users\jsluc\OneDrive\Documents\Alison\Linx-Query-Response\SessionResponse.txt";
-            string filePath = @"SessionResponse.txt";
+
+            // Find path of the linx data file
+            string workingDirectory = Environment.CurrentDirectory;
+            string filePath = $"{Directory.GetParent(workingDirectory).Parent.Parent.FullName}/SessionResponse.txt";
+
+
             StreamReader inFile = new StreamReader(filePath);
             string json = inFile.ReadToEnd();
             linxData = JsonConvert.DeserializeObject<List<ExpandoObject>>(json);
+
+            return linxData;
         }
 
-        private void GetAllSessionsFromDB()
+        private List<Session> GetAllSessionsFromDB()
         {
+            List<Session> sessions = new List<Session>();
             ConnectionString myConnection = new ConnectionString();
             string cs = myConnection.cs;
             using var con = new MySqlConnection(cs);
@@ -243,10 +233,7 @@ namespace etl.Session
             {
                 con.Close();
             }
-
+            return sessions;
         }
-
-
-
     }
 }
