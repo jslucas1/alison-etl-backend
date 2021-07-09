@@ -37,7 +37,7 @@ namespace etl.Session
                 },
                 null,
                 TimeSpan.Zero, 
-                TimeSpan.FromSeconds(3)
+                TimeSpan.FromSeconds(15)
             );
             return Task.CompletedTask;
         }

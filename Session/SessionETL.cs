@@ -35,6 +35,12 @@ namespace etl.Session
         //     }
         // }
 
+        private List<Session> sessions = new List<Session>();
+        private List<Session> inserts;
+        private List<Session> changes;
+        private List<Session> deletes;
+        private List<ExpandoObject> linxData;
+
         public bool ShouldRun()
         {
             ConnectionString myConnection = new ConnectionString();
@@ -55,7 +61,6 @@ namespace etl.Session
                 {
                     while (rdr.Read())
                     {
-                        Console.WriteLine("Reading a Session");
                         dynamic temp = new ExpandoObject();
                         temp.Id = rdr.GetInt32(0);
                         temp.ETLJobId = rdr.GetInt32(1);
@@ -91,10 +96,8 @@ namespace etl.Session
                 {
                     DateTime now = DateTime.Now;
                     DateTime lastStartDate = new DateTime();
-                    Console.WriteLine($"Outside IF");
                     if (pipeline.LastStartDate != null && pipeline.LastStartTime != null)
                     {
-                        Console.WriteLine($"Inside IF");
                         string[] tempStartDate = pipeline.LastStartDate.Split('/');
                         int month = int.Parse(tempStartDate[0]);
                         int day = int.Parse(tempStartDate[1]);
@@ -121,34 +124,88 @@ namespace etl.Session
         public void DoWork()
         {
             Console.WriteLine("in the session do work");
-            List<Session> sessions = GetAllSessionsFromDB();
-            Console.WriteLine($"{sessions.Count} Sessions Loaded");
+            GetAllSessionsFromDB();
+            //Console.WriteLine($"{sessions.Count} Sessions Loaded");
             foreach (Session item in sessions)
             {
                 Console.WriteLine($"{item.ID}, {item.Name}");
             }
 
             
-            List<ExpandoObject> linxData = GetLinxData();
+           GetLinxData();
+           LoadLinxTable();
+
 
         }
 
-        private List<ExpandoObject> GetLinxData()
+        private void InsertData(){
+            //add sql to insert records that don't exist
+
+        }
+
+        private void DeleteData(){
+            //add sql to delete records that no longer exist
+        }
+
+        private void UpdateData(){
+            //add sql to update records that have changed
+
+        }
+
+        private void LoadLinxTable(){
+            Console.WriteLine("About to load the linx data");
+            ConnectionString myConnection = new ConnectionString();
+            string cs = myConnection.cs;
+            using var con = new MySqlConnection(cs);
+
+            string stm = "INSERT INTO `alison-etl`.LINXSession";
+            stm += "             (LinxId, LegislativeDays, Name, StartDate, EndDate, TermName)";
+            stm += "      VALUES (@LinxId, @LegislativeDays, @Name, @StartDate, @EndDate, @TermName)";
+
+            string delStm = "DELETE FROM `alison-etl`.LINXSession";
+
+            try
+            {
+                con.Open();
+
+                using var delCmd = new MySqlCommand(delStm, con);
+                foreach(dynamic item in linxData){
+                    using var cmd = new MySqlCommand(stm, con);
+                    cmd.Parameters.AddWithValue("@LinxId",item.id);
+                    cmd.Parameters.AddWithValue("@LegislativeDays",item.legislativeDays);
+                    cmd.Parameters.AddWithValue("@Name",item.name);
+                    cmd.Parameters.AddWithValue("@StartDate",item.startDate);
+                    cmd.Parameters.AddWithValue("@EndDate",item.endDate);
+                    cmd.Parameters.AddWithValue("@TermName",item.term.name);
+            
+                    cmd.Prepare();
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Loading LINX Sessions Error");
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Just Finished Loading LINX Data");
+                con.Close();
+            }
+        }
+
+        private void GetLinxData()
         {
             //string filePath = @"C:\Users\jsluc\OneDrive\Documents\Alison\Linx-Query-Response\SessionResponse.txt";
             string filePath = @"SessionResponse.txt";
             StreamReader inFile = new StreamReader(filePath);
             string json = inFile.ReadToEnd();
-            List<ExpandoObject> linxData = JsonConvert.DeserializeObject<List<ExpandoObject>>(json);
-
-            return linxData;
+            linxData = JsonConvert.DeserializeObject<List<ExpandoObject>>(json);
         }
 
-        private List<Session> GetAllSessionsFromDB()
+        private void GetAllSessionsFromDB()
         {
-            // List<ExpandoObject> sessions = new List<ExpandoObject>();
-            List<Session> sessions = new List<Session>();
-
             ConnectionString myConnection = new ConnectionString();
             string cs = myConnection.cs;
             using var con = new MySqlConnection(cs);
@@ -177,7 +234,6 @@ namespace etl.Session
                 Console.WriteLine(e.Message);
             }
 
-            return sessions;
         }
 
 
