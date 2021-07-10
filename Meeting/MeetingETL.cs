@@ -14,14 +14,12 @@ namespace etl.Meeting
     {
         private int number = 0;
 
-        public void DoWork()
+        public void DoWork(Database db)
         {
             Console.WriteLine("In the Meeting do work");
-            List<Meeting> meetings = GetAllFromDB();
+            List<Meeting> meetings = GetAllFromDB(db.ConnString);
             Console.WriteLine($"{meetings.Count} Meetings Loaded");
-            Console.WriteLine("Meeting Details Example");
 
-            Console.WriteLine(meetings[0].ToString());
         }
 
         public bool ShouldRun()
@@ -36,12 +34,10 @@ namespace etl.Meeting
             return false;
         }
 
-        private List<Meeting> GetAllFromDB()
+        private List<Meeting> GetAllFromDB(string connString)
         {
             List<Meeting> meetings = new List<Meeting>();
-            ConnectionString myConnection = new ConnectionString();
-            string cs = myConnection.cs;
-            using var con = new MySqlConnection(cs);
+            using var con = new MySqlConnection(connString);
 
             string stm = "select * from `alison`.HearingsMeetings";
 

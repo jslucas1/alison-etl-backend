@@ -12,6 +12,13 @@ namespace etl.Meeting
     public class MeetingPipeline : IPipeline
     {
         private Timer timer;
+        private Database db;
+
+        public MeetingPipeline()
+        {
+            Config config = new Config();
+            this.db = new Database(config);
+        }
 
         public void Dispose()
         {
@@ -20,15 +27,13 @@ namespace etl.Meeting
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            Config conf = new Config();
             IEtl worker = new MeetingETL();
 
             timer = new Timer(o =>
                 {
                     if (worker.ShouldRun())
                     {
-                        //worker.DoWork(conf);
-                        worker.DoWork();
+                        worker.DoWork(this.db);
                     }
                     else
                     {

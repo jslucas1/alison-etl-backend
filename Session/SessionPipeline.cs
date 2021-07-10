@@ -13,6 +13,13 @@ namespace etl.Session
     public class SessionPipeline : IPipeline
     {
         private Timer timer;
+        private Database db;
+
+        public SessionPipeline()
+        {
+            Config config = new Config();
+            this.db = new Database(config);
+        }
 
         public void Dispose()
         {
@@ -21,14 +28,13 @@ namespace etl.Session
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            Config conf = new Config();
             IEtl worker = new SessionETL();
 
             timer = new Timer(o =>
                 {
                     if (worker.ShouldRun())
                     {
-                        worker.DoWork();
+                        worker.DoWork(this.db);
                     }
                     else
                     {
@@ -36,7 +42,7 @@ namespace etl.Session
                     }
                 },
                 null,
-                TimeSpan.Zero, 
+                TimeSpan.Zero,
                 TimeSpan.FromSeconds(15)
             );
             return Task.CompletedTask;
@@ -47,6 +53,6 @@ namespace etl.Session
             Console.WriteLine("Session Update Worker Stopped");
             return Task.CompletedTask;
         }
-        
+
     }
 }

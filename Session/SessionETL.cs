@@ -98,10 +98,10 @@ namespace etl.Session
 
         // is it time to run the ETL based off last run data
         // TODO: work from the config > public void DoWork(Config conf)
-        public void DoWork()
+        public void DoWork(Database db)
         {
             Console.WriteLine("in the session do work");
-            List<Session> sessions = GetAllSessionsFromDB();
+            List<Session> sessions = GetAllFromDB(db.ConnString);
             Console.WriteLine($"{sessions.Count} Sessions Loaded");
             foreach (Session item in sessions)
             {
@@ -194,12 +194,11 @@ namespace etl.Session
             return linxData;
         }
 
-        private List<Session> GetAllSessionsFromDB()
+        private List<Session> GetAllFromDB(string connString)
         {
             List<Session> sessions = new List<Session>();
-            ConnectionString myConnection = new ConnectionString();
-            string cs = myConnection.cs;
-            using var con = new MySqlConnection(cs);
+;
+            using var con = new MySqlConnection(connString);
 
             string stm = "select * from `alison`.Session Order by LinxId ASC";
 
