@@ -15,12 +15,6 @@ namespace etl.Session
         private Timer timer;
         private Database db;
 
-        public SessionPipeline()
-        {
-            Config config = new Config();
-            this.db = new Database(config);
-        }
-
         public void Dispose()
         {
             timer?.Dispose();
@@ -29,6 +23,7 @@ namespace etl.Session
         public Task StartAsync(CancellationToken cancellationToken)
         {
             IEtl worker = new SessionETL();
+            db = new Database();
 
             timer = new Timer(o =>
                 {

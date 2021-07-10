@@ -12,15 +12,20 @@ namespace etl
     {
         public string ConnString { get; set; }
 
-        public Database(Config config)
+        public Database(string server, string name, string port, string username, string password)
         {
-            string server = config.database_server;
-            string database = config.database_name;
-            string port = config.database_port;
-            string username = config.database_username;
-            string password = config.database_password;
+            this.ConnString = $@"server = {server};user={username};database={name};port={port};password={password};";
+        }
 
-            this.ConnString = $@"server = {server};user={username};database={database};port={port};password={password};";
+        public Database()
+        {
+            string server = Environment.GetEnvironmentVariable("alison_database_server");
+            string name = Environment.GetEnvironmentVariable("alison_database_name");
+            string port = Environment.GetEnvironmentVariable("alison_database_port");
+            string username = Environment.GetEnvironmentVariable("alison_database_username");
+            string password = Environment.GetEnvironmentVariable("alison_database_password");
+
+            this.ConnString = $@"server = {server};user={username};database={name};port={port};password={password};";
         }
 
         public override string ToString()

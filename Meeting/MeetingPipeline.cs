@@ -14,12 +14,6 @@ namespace etl.Meeting
         private Timer timer;
         private Database db;
 
-        public MeetingPipeline()
-        {
-            Config config = new Config();
-            this.db = new Database(config);
-        }
-
         public void Dispose()
         {
             timer?.Dispose();
@@ -28,6 +22,7 @@ namespace etl.Meeting
         public Task StartAsync(CancellationToken cancellationToken)
         {
             IEtl worker = new MeetingETL();
+            db = new Database();
 
             timer = new Timer(o =>
                 {
