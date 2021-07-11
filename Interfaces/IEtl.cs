@@ -2,7 +2,7 @@ namespace etl.Interfaces
 {
     public interface IEtl
     {
-         public void DoWork(Database db);
+         public void DoWork();
          public bool ShouldRun();
     }
 }

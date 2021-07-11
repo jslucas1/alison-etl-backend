@@ -11,41 +11,41 @@ namespace etl.Meeting
 {
     public class MeetingPipeline : IPipeline
     {
+        private readonly string pipelineName = "Meeting";
+        private int checkInSeconds = 15;
         private Timer timer;
-        private Database db;
-
-        public void Dispose()
-        {
-            timer?.Dispose();
-        }
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
             IEtl worker = new MeetingETL();
-            db = new Database();
 
             timer = new Timer(o =>
+            {
+                if (worker.ShouldRun())
                 {
-                    if (worker.ShouldRun())
-                    {
-                        worker.DoWork(this.db);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Not time to work on Meeting");
-                    }
-                },
+                    worker.DoWork();
+                }
+                else
+                {
+                    Console.WriteLine($"Not time to work on {pipelineName}");
+                }
+            },
                 null,
                 TimeSpan.Zero,
-                TimeSpan.FromSeconds(10)
+                TimeSpan.FromSeconds(checkInSeconds)
             );
             return Task.CompletedTask;
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
         {
-            Console.WriteLine("Meeting Update Worker Stopped");
+            Console.WriteLine($"{pipelineName} Update Worker Stopped");
             return Task.CompletedTask;
+        }
+
+        public void Dispose()
+        {
+            timer?.Dispose();
         }
 
     }

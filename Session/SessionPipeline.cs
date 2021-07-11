@@ -12,41 +12,41 @@ namespace etl.Session
 {
     public class SessionPipeline : IPipeline
     {
+        private readonly string pipelineName = "Session";
+        private int checkInSeconds = 15;
         private Timer timer;
-        private Database db;
-
-        public void Dispose()
-        {
-            timer?.Dispose();
-        }
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
             IEtl worker = new SessionETL();
-            db = new Database();
 
             timer = new Timer(o =>
                 {
                     if (worker.ShouldRun())
                     {
-                        worker.DoWork(this.db);
+                        worker.DoWork();
                     }
                     else
                     {
-                        Console.WriteLine("Not time to work on Session");
+                        Console.WriteLine($"Not time to work on {pipelineName}");
                     }
                 },
                 null,
                 TimeSpan.Zero,
-                TimeSpan.FromSeconds(15)
+                TimeSpan.FromSeconds(checkInSeconds)
             );
             return Task.CompletedTask;
         }
 
         public Task StopAsync(CancellationToken cancellationToken)
         {
-            Console.WriteLine("Session Update Worker Stopped");
+            Console.WriteLine($"{pipelineName} Update Worker Stopped");
             return Task.CompletedTask;
+        }
+
+        public void Dispose()
+        {
+            timer?.Dispose();
         }
 
     }

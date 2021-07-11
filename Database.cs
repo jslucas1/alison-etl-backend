@@ -12,11 +12,13 @@ namespace etl
     {
         public string ConnString { get; set; }
 
+        // CTOR 
         public Database(string server, string name, string port, string username, string password)
         {
             this.ConnString = $@"server = {server};user={username};database={name};port={port};password={password};";
         }
 
+        // CTOR loading from ENV
         public Database()
         {
             string server = Environment.GetEnvironmentVariable("alison_database_server");
@@ -26,6 +28,40 @@ namespace etl
             string password = Environment.GetEnvironmentVariable("alison_database_password");
 
             this.ConnString = $@"server = {server};user={username};database={name};port={port};password={password};";
+        }
+
+        //Generic Select Query Function
+        public List<ExpandoObject> Select(string query)
+        {
+            List<ExpandoObject> results = new(); 
+            using var con = new MySqlConnection(this.ConnString);
+            try
+            {
+                con.Open();
+                using var cmd2 = new MySqlCommand(query, con);
+                using var rdr = cmd2.ExecuteReader();
+                while (rdr.Read())
+                {
+                    var temp = new ExpandoObject() as IDictionary<string, Object>;
+                    for (int i = 0; i < rdr.FieldCount; i++)
+                    {
+                        temp.TryAdd(rdr.GetName(i), rdr.GetValue(i));
+                    }
+
+                    results.Add((ExpandoObject)temp);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Select Query Error");
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return results;
         }
 
         public override string ToString()

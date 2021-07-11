@@ -17,50 +17,20 @@ namespace etl.Session
 {
     public class SessionETL : IEtl
     {
+        private Database db;
+
+        public SessionETL()
+        {
+            db = new Database();
+        }
+
         public bool ShouldRun()
         {
-            ConnectionString myConnection = new ConnectionString();
-            string cs = myConnection.cs;
-            using var con = new MySqlConnection(cs);
-
             string stm = "select * from `alison-etl`.ETLJobPipeline a, ";
             stm += "              `alison-etl`.ETLPipeline b";
             stm += "         where a.Status = \"Active\" AND b.Name = \"Sessions\" AND a.PipelineId = b.Id";
 
-            List<ExpandoObject> pipelines = new List<ExpandoObject>();
-
-            try
-            {
-                con.Open();
-                using var cmd2 = new MySqlCommand(stm, con);
-                using (var rdr = cmd2.ExecuteReader())
-                {
-                    while (rdr.Read())
-                    {
-                        dynamic temp = new ExpandoObject();
-                        temp.Id = rdr.GetInt32(0);
-                        temp.ETLJobId = rdr.GetInt32(1);
-                        temp.PipelineId = rdr.GetInt32(2);
-                        temp.ScheduledMinutes = rdr.GetInt32(3);
-                        temp.LastStartDate = rdr.GetString(4);
-                        temp.LastStartTime = rdr.GetString(5);
-                        temp.LastCompletedTime = rdr.GetString(6);
-                        temp.Status = rdr.GetString(7);
-
-                        pipelines.Add(temp);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Loading Sessions Error");
-                Console.WriteLine(e.Message);
-                return false;
-            }
-            finally
-            {
-                con.Close();
-            }
+            List<ExpandoObject> pipelines = this.db.Select(stm);
 
             foreach (dynamic pipeline in pipelines)
             {
@@ -98,18 +68,16 @@ namespace etl.Session
 
         // is it time to run the ETL based off last run data
         // TODO: work from the config > public void DoWork(Config conf)
-        public void DoWork(Database db)
+        public void DoWork()
         {
-            Console.WriteLine("in the session do work");
-            List<Session> sessions = GetAllFromDB(db.ConnString);
-            Console.WriteLine($"{sessions.Count} Sessions Loaded");
-            foreach (Session item in sessions)
-            {
-                Console.WriteLine($"{item.ID}, {item.Name}");
-            }
+            Console.WriteLine("SessionETL: DoWork()");
+            List<ExpandoObject> sessions = GetAllFromDB();
+            Console.WriteLine($"{sessions.Count} Sessions Loaded From DB");
 
             List<ExpandoObject> linxData = GetLinxData();
-            LoadLinxTable(linxData);
+            Console.WriteLine($"{linxData.Count} Linx Sessions Loaded From DB");
+
+            //LoadLinxTable(linxData);
         }
 
         private void InsertData()
@@ -180,8 +148,6 @@ namespace etl.Session
         {
             List<ExpandoObject> linxData = new List<ExpandoObject>();
 
-            //string filePath = @"C:\Users\jsluc\OneDrive\Documents\Alison\Linx-Query-Response\SessionResponse.txt";
-
             // Find path of the linx data file
             string workingDirectory = Environment.CurrentDirectory;
             string filePath = $"{Directory.GetParent(workingDirectory).Parent.Parent.FullName}/SessionResponse.txt";
@@ -194,45 +160,52 @@ namespace etl.Session
             return linxData;
         }
 
-        private List<Session> GetAllFromDB(string connString)
+        private List<ExpandoObject> GetAllFromDB()
         {
-            List<Session> sessions = new List<Session>();
-;
-            using var con = new MySqlConnection(connString);
-
             string stm = "select * from `alison`.Session Order by LinxId ASC";
+            List<ExpandoObject> sessions = this.db.Select(stm);
 
-            try
-            {
-                con.Open();
-                using var cmd2 = new MySqlCommand(stm, con);
-                using (var rdr = cmd2.ExecuteReader())
-                {
-                    while (rdr.Read())
-                    {
-                        sessions.Add(new Session()
-                        {
-                            ID = rdr.GetInt32(0),
-                            LinxId = rdr.GetInt32(1),
-                            LegislativeDays = rdr.GetInt32(2),
-                            Name = rdr.GetString(3),
-                            StartTime = rdr.GetString(4),
-                            EndDate = rdr.GetString(5),
-                            TermName = rdr.GetString(6),
-                            ActiveEtlSession = rdr.GetString(7)
-                        });
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            finally
-            {
-                con.Close();
-            }
             return sessions;
+
+
+
+//            List<Session> sessions = new List<Session>();
+//;
+//            using var con = new MySqlConnection(connString);
+
+//            string stm = "select * from `alison`.Session Order by LinxId ASC";
+
+//            try
+//            {
+//                con.Open();
+//                using var cmd2 = new MySqlCommand(stm, con);
+//                using (var rdr = cmd2.ExecuteReader())
+//                {
+//                    while (rdr.Read())
+//                    {
+//                        sessions.Add(new Session()
+//                        {
+//                            ID = rdr.GetInt32(0),
+//                            LinxId = rdr.GetInt32(1),
+//                            LegislativeDays = rdr.GetInt32(2),
+//                            Name = rdr.GetString(3),
+//                            StartTime = rdr.GetString(4),
+//                            EndDate = rdr.GetString(5),
+//                            TermName = rdr.GetString(6),
+//                            ActiveEtlSession = rdr.GetString(7)
+//                        });
+//                    }
+//                }
+//            }
+//            catch (Exception e)
+//            {
+//                Console.WriteLine(e.Message);
+//            }
+//            finally
+//            {
+//                con.Close();
+//            }
+//            return sessions;
         }
     }
 }
