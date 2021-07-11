@@ -64,6 +64,10 @@ namespace etl
             return results;
         }
 
+        public void Update() { }
+
+        public void Dalete() { }
+
         public override string ToString()
         {
             return this.ConnString;

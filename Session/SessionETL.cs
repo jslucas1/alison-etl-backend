@@ -19,11 +19,18 @@ namespace etl.Session
     {
         private Database db;
 
+        /// <summary>
+        /// SessionETL Construtor
+        /// </summary>
         public SessionETL()
         {
             db = new Database();
         }
 
+        /// <summary>
+        /// This method performs the calculation to run the sync or not
+        /// </summary>
+        /// <returns>whether or not to run bool</returns>
         public bool ShouldRun()
         {
             string stm = "select * from `alison-etl`.ETLJobPipeline a, ";
@@ -66,8 +73,9 @@ namespace etl.Session
             return false;
         }
 
-        // is it time to run the ETL based off last run data
-        // TODO: work from the config > public void DoWork(Config conf)
+        /// <summary>
+        /// This method is the driver for the work performed.
+        /// </summary>
         public void DoWork()
         {
             Console.WriteLine("SessionETL: DoWork()");
@@ -99,12 +107,16 @@ namespace etl.Session
 
         }
 
+        /// <summary>
+        /// This method loads the provided raw linx session data
+        /// into the temp LINXSession table
+        /// </summary>
+        /// <param name="linxData"><c>List<ExpandoObject></c></param>
         private void LoadLinxTable(List<ExpandoObject> linxData)
         {
             Console.WriteLine("About to load the linx data");
-            ConnectionString myConnection = new ConnectionString();
-            string cs = myConnection.cs;
-            using var con = new MySqlConnection(cs);
+
+            using var con = new MySqlConnection(this.db.ConnString);
 
             string stm = "INSERT INTO `alison-etl`.LINXSession";
             stm += "             (LinxId, LegislativeDays, Name, StartDate, EndDate, TermName)";
@@ -144,6 +156,13 @@ namespace etl.Session
             }
         }
 
+        /// <summary> This method reads linx data into a List from a file
+        /// TODO: Modification needed after api becomes openly avaliable.
+        /// <example> For example:
+        /// <code>List<ExpandoObject> linxData = GetLinxData()</code>
+        /// </example>
+        /// </summary>
+        /// <returns><c>List<ExpandoObject></c></returns>
         private List<ExpandoObject> GetLinxData()
         {
             List<ExpandoObject> linxData = new List<ExpandoObject>();
@@ -160,52 +179,20 @@ namespace etl.Session
             return linxData;
         }
 
+        /// <summary>
+        /// This method performs a database query for all session data 
+        /// ordered by LinxId ASC
+        /// <example> For example:
+        /// <code>List<ExpandoObject> sessions = GetAllFromDB()</code>
+        /// </example>
+        /// </summary>
+        /// <returns><c>List<ExpandoObject></c></returns>
         private List<ExpandoObject> GetAllFromDB()
         {
             string stm = "select * from `alison`.Session Order by LinxId ASC";
             List<ExpandoObject> sessions = this.db.Select(stm);
 
             return sessions;
-
-
-
-//            List<Session> sessions = new List<Session>();
-//;
-//            using var con = new MySqlConnection(connString);
-
-//            string stm = "select * from `alison`.Session Order by LinxId ASC";
-
-//            try
-//            {
-//                con.Open();
-//                using var cmd2 = new MySqlCommand(stm, con);
-//                using (var rdr = cmd2.ExecuteReader())
-//                {
-//                    while (rdr.Read())
-//                    {
-//                        sessions.Add(new Session()
-//                        {
-//                            ID = rdr.GetInt32(0),
-//                            LinxId = rdr.GetInt32(1),
-//                            LegislativeDays = rdr.GetInt32(2),
-//                            Name = rdr.GetString(3),
-//                            StartTime = rdr.GetString(4),
-//                            EndDate = rdr.GetString(5),
-//                            TermName = rdr.GetString(6),
-//                            ActiveEtlSession = rdr.GetString(7)
-//                        });
-//                    }
-//                }
-//            }
-//            catch (Exception e)
-//            {
-//                Console.WriteLine(e.Message);
-//            }
-//            finally
-//            {
-//                con.Close();
-//            }
-//            return sessions;
         }
     }
 }
