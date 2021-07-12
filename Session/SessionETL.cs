@@ -88,29 +88,28 @@ namespace etl.Session
             //LoadLinxTable(linxData);
         }
 
+        /// <summary>
+        /// add sql to insert records that don't exist
+        /// </summary>
         private void InsertData()
         {
-            //add sql to insert records that don't exist
-            //List<Session> inserts = new List<Session>();
-
             this.db.StoredProc("insert_sessions_proc_name");
-
         }
 
+        /// <summary>
+        /// add sql to delete records that no longer exist
+        /// </summary>
         private void DeleteData()
         {
-            //add sql to delete records that no longer exist
-            //List<Session> deletes = new List<Session>();
             this.db.StoredProc("delete_sessions_proc_name");
-
         }
 
+        /// <summary>
+        /// add sql to update records that have changed
+        /// </summary>
         private void UpdateData()
         {
-            //add sql to update records that have changed
-            //List<Session> changes = new List<Session>();
             this.db.StoredProc("update_sessions_proc_name");
-
         }
 
         /// <summary>
