@@ -91,19 +91,19 @@ namespace etl.Session
         private void InsertData()
         {
             //add sql to insert records that don't exist
-            List<Session> inserts = new List<Session>();
+            //List<Session> inserts = new List<Session>();
         }
 
         private void DeleteData()
         {
             //add sql to delete records that no longer exist
-            List<Session> deletes = new List<Session>();
+            //List<Session> deletes = new List<Session>();
         }
 
         private void UpdateData()
         {
             //add sql to update records that have changed
-            List<Session> changes = new List<Session>();
+            //List<Session> changes = new List<Session>();
 
         }
 
@@ -129,6 +129,8 @@ namespace etl.Session
                 con.Open();
 
                 using var delCmd = new MySqlCommand(delStm, con);
+                delCmd.ExecuteNonQuery();
+
                 foreach (dynamic item in linxData)
                 {
                     using var cmd = new MySqlCommand(stm, con);
