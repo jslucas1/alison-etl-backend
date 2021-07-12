@@ -1,10 +1,14 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using System.Data;
+using MySql.Data;
+using MySql.Data.MySqlClient;
+
 
 namespace etl
 {
@@ -67,6 +71,29 @@ namespace etl
         public void Update() { }
 
         public void Dalete() { }
+
+        public void StoredProc(string procName)
+        {
+            using var conn = new MySqlConnection(this.ConnString);
+            try
+            {
+                conn.Open();
+                using var cmd = new MySqlCommand(procName, conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                int rows_affected = cmd.ExecuteNonQuery();
+                Console.WriteLine($"{rows_affected} by {procName}");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Select Query Error");
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
 
         public override string ToString()
         {
