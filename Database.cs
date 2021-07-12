@@ -86,8 +86,9 @@ namespace etl
             }
             catch (Exception e)
             {
-                Console.WriteLine("Select Query Error");
-                Console.WriteLine(e.Message);
+                Console.WriteLine($"Error Running Stored Proc: {procName}" + 
+                    Environment.NewLine +
+                    e.Message);
             }
             finally
             {
