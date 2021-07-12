@@ -92,18 +92,24 @@ namespace etl.Session
         {
             //add sql to insert records that don't exist
             //List<Session> inserts = new List<Session>();
+
+            this.db.StoredProc("insert_sessions_proc_name");
+
         }
 
         private void DeleteData()
         {
             //add sql to delete records that no longer exist
             //List<Session> deletes = new List<Session>();
+            this.db.StoredProc("delete_sessions_proc_name");
+
         }
 
         private void UpdateData()
         {
             //add sql to update records that have changed
             //List<Session> changes = new List<Session>();
+            this.db.StoredProc("update_sessions_proc_name");
 
         }
 
