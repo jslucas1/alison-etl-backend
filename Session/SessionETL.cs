@@ -132,40 +132,23 @@ namespace etl.Session
         {
             Console.WriteLine("About to load the linx data");
 
-            using var con = new MySqlConnection(this.db.ConnString);
-
             string stm = "INSERT INTO `alison-etl`.LINXSession";
             stm += "             (LinxId, LegislativeDays, Name, StartDate, EndDate, TermName)";
             stm += "      VALUES (@LinxId, @LegislativeDays, @Name, @StartDate, @EndDate, @TermName)";
 
-            try
-            {
-                con.Open();
 
-                foreach (dynamic item in linxData)
+            foreach (dynamic item in linxData)
+            {
+                Dictionary<string, string> values = new Dictionary<string, string>()
                 {
-                    using var cmd = new MySqlCommand(stm, con);
-                    cmd.Parameters.AddWithValue("@LinxId", item.id);
-                    cmd.Parameters.AddWithValue("@LegislativeDays", item.legislativeDays);
-                    cmd.Parameters.AddWithValue("@Name", item.name);
-                    cmd.Parameters.AddWithValue("@StartDate", item.startDate);
-                    cmd.Parameters.AddWithValue("@EndDate", item.endDate);
-                    cmd.Parameters.AddWithValue("@TermName", item.term.name);
-
-                    cmd.Prepare();
-                    cmd.ExecuteNonQuery();
-                }
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Loading LINX Sessions Error");
-                Console.WriteLine(e.Message);
-            }
-            finally
-            {
-                Console.WriteLine("Just Finished Loading LINX Data");
-                con.Close();
+                    {"@LinxId", item.id},
+                    {"@LegislativeDays", item.legislativeDays},
+                    {"@Name", item.name},
+                    {"@StartDate", item.startDate},
+                    {"@EndDate", item.endDate},
+                    {"@TermName", item.term.name},
+                };
+                this.db.Insert(stm, values);
             }
         }
 

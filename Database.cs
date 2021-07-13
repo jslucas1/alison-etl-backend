@@ -69,7 +69,40 @@ namespace etl
             return results;
         }
 
-        public void Update() { }
+        public void Update(string query)
+        {
+
+
+        }
+
+        public void Insert(string query, Dictionary<string, string> values)
+        {
+            using var con = new MySqlConnection(this.ConnString);
+
+            try
+            {
+                con.Open();
+
+                using var cmd = new MySqlCommand(query, con);
+                foreach (var p in values)
+                {
+                    cmd.Parameters.AddWithValue(p.Key, p.Value);
+                }
+
+                cmd.Prepare();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error Inserting Data");
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Just Finished Inserting Data");
+                con.Close();
+            }
+        }
 
         public void Dalete() { }
 
@@ -87,7 +120,7 @@ namespace etl
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Error Running Stored Proc: {procName}" + 
+                Console.WriteLine($"Error Running Stored Proc: {procName}" +
                     Environment.NewLine +
                     e.Message);
             }
