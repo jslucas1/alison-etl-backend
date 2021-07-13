@@ -92,6 +92,8 @@ namespace etl.Session
         {
             //add sql to insert records that don't exist
             //List<Session> inserts = new List<Session>();
+
+
         }
 
         private void DeleteData()
@@ -171,7 +173,8 @@ namespace etl.Session
 
             // Find path of the linx data file
             string workingDirectory = Environment.CurrentDirectory;
-            string filePath = $"{Directory.GetParent(workingDirectory).Parent.Parent.FullName}/SessionResponse.txt";
+            //string filePath = $"{Directory.GetParent(workingDirectory).Parent.Parent.FullName}/SessionResponse.txt";
+            string filePath = "SessionResponse.txt";
 
 
             StreamReader inFile = new StreamReader(filePath);

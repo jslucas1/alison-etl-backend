@@ -26,6 +26,7 @@ namespace etl
             string port = Environment.GetEnvironmentVariable("alison_database_port");
             string username = Environment.GetEnvironmentVariable("alison_database_username");
             string password = Environment.GetEnvironmentVariable("alison_database_password");
+            Console.WriteLine("got the datbase " + server);
 
             this.ConnString = $@"server = {server};user={username};database={name};port={port};password={password};";
         }
@@ -33,7 +34,7 @@ namespace etl
         //Generic Select Query Function
         public List<ExpandoObject> Select(string query)
         {
-            List<ExpandoObject> results = new(); 
+            List<ExpandoObject> results = new();
             using var con = new MySqlConnection(this.ConnString);
             try
             {
