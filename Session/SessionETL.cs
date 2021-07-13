@@ -93,6 +93,9 @@ namespace etl.Session
 
             //Insert new records in LINX table not in Warehouse Table
             InsertData("InsertWarehouseSession");
+
+            //Delete records in Warehouse that is not in LINX table
+            DeleteData("DeleteWarehouseSession");
         }
 
         /// <summary>
