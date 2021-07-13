@@ -96,6 +96,9 @@ namespace etl.Session
 
             //Delete records in Warehouse that is not in LINX table
             DeleteData("DeleteWarehouseSession");
+
+            //Update records in Warehouse based on data in LINX table
+            UpdateData("UpdateWarehouseSession");
         }
 
         /// <summary>
@@ -118,9 +121,9 @@ namespace etl.Session
         /// <summary>
         /// add sql to update records that have changed
         /// </summary>
-        private void UpdateData()
+        private void UpdateData(string update_proc_name)
         {
-            this.db.StoredProc("update_sessions_proc_name");
+            this.db.StoredProc(update_proc_name);
         }
 
         /// <summary>
