@@ -85,16 +85,17 @@ namespace etl.Session
             List<ExpandoObject> linxData = GetLinxData();
             Console.WriteLine($"{linxData.Count} Linx Sessions Loaded From DB");
 
-            //LoadLinxTable(linxData);
+            LoadLinxTable(linxData);
+            InsertData("InsertWarehouseSession");
         }
 
         /// <summary>
         /// add sql to insert records that don't exist
         /// </summary>
-        private void InsertData()
+        private void InsertData(string insert_proc_name)
         {
             //add sql to insert records that don't exist
-            this.db.StoredProc("insert_sessions_proc_name");
+            this.db.StoredProc(insert_proc_name);
         }
 
         /// <summary>
@@ -128,14 +129,11 @@ namespace etl.Session
             stm += "             (LinxId, LegislativeDays, Name, StartDate, EndDate, TermName)";
             stm += "      VALUES (@LinxId, @LegislativeDays, @Name, @StartDate, @EndDate, @TermName)";
 
-            DeleteData("DeleteLinxSession()");
+            DeleteData("DeleteLinxSession");
 
             try
             {
                 con.Open();
-
-                using var delCmd = new MySqlCommand(delStm, con);
-                delCmd.ExecuteNonQuery();
 
                 foreach (dynamic item in linxData)
                 {
