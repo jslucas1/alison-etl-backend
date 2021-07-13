@@ -83,9 +83,15 @@ namespace etl.Session
             Console.WriteLine($"{sessions.Count} Sessions Loaded From DB");
 
             List<ExpandoObject> linxData = GetLinxData();
-            Console.WriteLine($"{linxData.Count} Linx Sessions Loaded From DB");
+            Console.WriteLine($"{linxData.Count} Linx Sessions Loaded From API Call");
 
+            //Delete Data in LINX table
+            DeleteData("DeleteLinxSession");
+
+            //Load Data to LINX table from API Call
             LoadLinxTable(linxData);
+
+            //Insert new records in LINX table not in Warehouse Table
             InsertData("InsertWarehouseSession");
         }
 
@@ -128,8 +134,6 @@ namespace etl.Session
             string stm = "INSERT INTO `alison-etl`.LINXSession";
             stm += "             (LinxId, LegislativeDays, Name, StartDate, EndDate, TermName)";
             stm += "      VALUES (@LinxId, @LegislativeDays, @Name, @StartDate, @EndDate, @TermName)";
-
-            DeleteData("DeleteLinxSession");
 
             try
             {
