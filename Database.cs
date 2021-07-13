@@ -75,7 +75,7 @@ namespace etl
 
         }
 
-        public void Insert(string query, Dictionary<string, string> values)
+        public void Insert(string query, Dictionary<string, object> values)
         {
             using var con = new MySqlConnection(this.ConnString);
 

@@ -142,7 +142,7 @@ namespace etl.Session
 
             foreach (dynamic item in linxData)
             {
-                Dictionary<string, string> values = new Dictionary<string, string>()
+                var values = new Dictionary<string, object>()
                 {
                     {"@LinxId", item.id},
                     {"@LegislativeDays", item.legislativeDays},
