@@ -19,25 +19,32 @@ namespace etl.Session
     {
         private Database db;
 
-        /// <summary>
-        /// SessionETL Construtor
-        /// </summary>
         public SessionETL()
         {
             db = new Database();
         }
 
-        /// <summary>
-        /// This method performs the calculation to run the sync or not
-        /// </summary>
-        /// <returns>whether or not to run bool</returns>
         public bool ShouldRun()
         {
+
+
             string stm = "select * from `alison-etl`.ETLJobPipeline a, ";
             stm += "              `alison-etl`.ETLPipeline b";
             stm += "         where a.Status = \"Active\" AND b.Name = \"Sessions\" AND a.PipelineId = b.Id";
 
-            List<ExpandoObject> pipelines = this.db.Select(stm);
+            List<ExpandoObject> pipelines = null;
+
+            try
+            {
+                this.db.Open();
+                pipelines = this.db.Select(stm);
+                this.db.Close();
+            }
+            catch
+            {
+                Console.WriteLine("Error Pulling Pipelines Data");
+                return false;
+            }
 
             foreach (dynamic pipeline in pipelines)
             {
@@ -73,15 +80,18 @@ namespace etl.Session
             return false;
         }
 
-        /// <summary>
-        /// This method is the driver for the work performed.
-        /// </summary>
         public void DoWork()
         {
             Console.WriteLine("SessionETL: DoWork()");
+
+            // Open Connection to the DB
+            this.db.Open();
+
+            // Load Current DB data
             List<ExpandoObject> sessions = GetAllFromDB();
             Console.WriteLine($"{sessions.Count} Sessions Loaded From DB");
 
+            // Load Data from the Linx Source 
             List<ExpandoObject> linxData = GetLinxData();
             Console.WriteLine($"{linxData.Count} Linx Sessions Loaded From API Call");
 
@@ -99,39 +109,27 @@ namespace etl.Session
 
             //Update records in Warehouse based on data in LINX table
             UpdateData("UpdateWarehouseSession");
+
+            // Close Connection to the DB
+            this.db.Close();
         }
 
-        /// <summary>
-        /// add sql to insert records that don't exist
-        /// </summary>
-        private void InsertData(string insert_proc_name)
+        public void InsertData(string insert_proc_name)
         {
-            //add sql to insert records that don't exist
             this.db.StoredProc(insert_proc_name);
         }
 
-        /// <summary>
-        /// add sql to delete records that no longer exist
-        /// </summary>
-        private void DeleteData(string delete_proc_name)
+        public void DeleteData(string delete_proc_name)
         {
             this.db.StoredProc(delete_proc_name);
         }
 
-        /// <summary>
-        /// add sql to update records that have changed
-        /// </summary>
-        private void UpdateData(string update_proc_name)
+        public void UpdateData(string update_proc_name)
         {
             this.db.StoredProc(update_proc_name);
         }
 
-        /// <summary>
-        /// This method loads the provided raw linx session data
-        /// into the temp LINXSession table
-        /// </summary>
-        /// <param name="linxData"><c>List<ExpandoObject></c></param>
-        private void LoadLinxTable(List<ExpandoObject> linxData)
+        public void LoadLinxTable(List<ExpandoObject> linxData)
         {
             Console.WriteLine("About to load the linx data");
 
@@ -155,21 +153,14 @@ namespace etl.Session
             }
         }
 
-        /// <summary> This method reads linx data into a List from a file
-        /// TODO: Modification needed after api becomes openly avaliable.
-        /// <example> For example:
-        /// <code>List<ExpandoObject> linxData = GetLinxData()</code>
-        /// </example>
-        /// </summary>
-        /// <returns><c>List<ExpandoObject></c></returns>
-        private List<ExpandoObject> GetLinxData()
+        public List<ExpandoObject> GetLinxData()
         {
             List<ExpandoObject> linxData = new List<ExpandoObject>();
 
             // Find path of the linx data file
             string workingDirectory = Environment.CurrentDirectory;
-            //string filePath = $"{Directory.GetParent(workingDirectory).Parent.Parent.FullName}/SessionResponse.txt";
-            string filePath = "SessionResponse.txt";
+            string filePath = $"{Directory.GetParent(workingDirectory).Parent.Parent.FullName}/SessionResponse.txt";
+            //string filePath = "SessionResponse.txt";
 
 
             StreamReader inFile = new StreamReader(filePath);
@@ -179,15 +170,7 @@ namespace etl.Session
             return linxData;
         }
 
-        /// <summary>
-        /// This method performs a database query for all session data 
-        /// ordered by LinxId ASC
-        /// <example> For example:
-        /// <code>List<ExpandoObject> sessions = GetAllFromDB()</code>
-        /// </example>
-        /// </summary>
-        /// <returns><c>List<ExpandoObject></c></returns>
-        private List<ExpandoObject> GetAllFromDB()
+        public List<ExpandoObject> GetAllFromDB()
         {
             string stm = "select * from `alison`.Session Order by LinxId ASC";
             List<ExpandoObject> sessions = this.db.Select(stm);

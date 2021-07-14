@@ -15,14 +15,8 @@ namespace etl
     public class Database
     {
         public string ConnString { get; set; }
+        public MySqlConnection Conn { get; set; }
 
-        // CTOR 
-        public Database(string server, string name, string port, string username, string password)
-        {
-            this.ConnString = $@"server = {server};user={username};database={name};port={port};password={password};";
-        }
-
-        // CTOR loading from ENV
         public Database()
         {
             string server = Environment.GetEnvironmentVariable("alison_database_server");
@@ -33,18 +27,26 @@ namespace etl
             Console.WriteLine("got the datbase " + server);
 
             this.ConnString = $@"server = {server};user={username};database={name};port={port};password={password};";
+            this.Conn = new MySqlConnection(this.ConnString);
         }
 
-        //Generic Select Query Function
+        public void Open()
+        {
+            this.Conn.Open();
+        }
+
+        public void Close()
+        {
+            this.Conn.Close();
+        }
+
         public List<ExpandoObject> Select(string query)
         {
             List<ExpandoObject> results = new();
-            using var con = new MySqlConnection(this.ConnString);
             try
             {
-                con.Open();
-                using var cmd2 = new MySqlCommand(query, con);
-                using var rdr = cmd2.ExecuteReader();
+                using var cmd = new MySqlCommand(query, this.Conn);
+                using var rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
                     var temp = new ExpandoObject() as IDictionary<string, Object>;
@@ -61,29 +63,15 @@ namespace etl
                 Console.WriteLine("Select Query Error");
                 Console.WriteLine(e.Message);
             }
-            finally
-            {
-                con.Close();
-            }
 
             return results;
         }
 
-        public void Update(string query)
-        {
-
-
-        }
-
         public void Insert(string query, Dictionary<string, object> values)
         {
-            using var con = new MySqlConnection(this.ConnString);
-
             try
             {
-                con.Open();
-
-                using var cmd = new MySqlCommand(query, con);
+                using var cmd = new MySqlCommand(query, this.Conn);
                 foreach (var p in values)
                 {
                     cmd.Parameters.AddWithValue(p.Key, p.Value);
@@ -97,42 +85,21 @@ namespace etl
                 Console.WriteLine("Error Inserting Data");
                 Console.WriteLine(e.Message);
             }
-            finally
-            {
-                Console.WriteLine("Just Finished Inserting Data");
-                con.Close();
-            }
         }
-
-        public void Dalete() { }
 
         public void StoredProc(string procName)
         {
-            using var conn = new MySqlConnection(this.ConnString);
             try
             {
-                conn.Open();
-                using var cmd = new MySqlCommand(procName, conn);
+                using var cmd = new MySqlCommand(procName, this.Conn);
                 cmd.CommandType = CommandType.StoredProcedure;
-
                 int rows_affected = cmd.ExecuteNonQuery();
-                Console.WriteLine($"{rows_affected} by {procName}");
             }
             catch (Exception e)
             {
                 Console.WriteLine($"Error Running Stored Proc: {procName}" +
-                    Environment.NewLine +
-                    e.Message);
+                    Environment.NewLine + e.Message);
             }
-            finally
-            {
-                conn.Close();
-            }
-        }
-
-        public override string ToString()
-        {
-            return this.ConnString;
         }
     }
 }
