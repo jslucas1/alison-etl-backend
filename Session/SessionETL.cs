@@ -26,8 +26,6 @@ namespace etl.Session
 
         public bool ShouldRun()
         {
-
-
             string stm = "select * from `alison-etl`.ETLJobPipeline a, ";
             stm += "              `alison-etl`.ETLPipeline b";
             stm += "         where a.Status = \"Active\" AND b.Name = \"Sessions\" AND a.PipelineId = b.Id";
@@ -88,8 +86,8 @@ namespace etl.Session
             this.db.Open();
 
             // Load Current DB data
-            List<ExpandoObject> sessions = GetAllFromDB();
-            Console.WriteLine($"{sessions.Count} Sessions Loaded From DB");
+            List<ExpandoObject> data = GetAllFromDB();
+            Console.WriteLine($"{data.Count} Sessions Loaded From DB");
 
             // Load Data from the Linx Source 
             List<ExpandoObject> linxData = GetLinxData();
@@ -158,9 +156,9 @@ namespace etl.Session
             List<ExpandoObject> linxData = new List<ExpandoObject>();
 
             // Find path of the linx data file
-            string workingDirectory = Environment.CurrentDirectory;
-            string filePath = $"{Directory.GetParent(workingDirectory).Parent.Parent.FullName}/SessionResponse.txt";
-            //string filePath = "SessionResponse.txt";
+            // string workingDirectory = Environment.CurrentDirectory;
+            // string filePath = $"{Directory.GetParent(workingDirectory).Parent.Parent.FullName}/SessionResponse.txt";
+            string filePath = "SessionResponse.txt";
 
 
             StreamReader inFile = new StreamReader(filePath);
