@@ -94,6 +94,7 @@ namespace etl
                 using var cmd = new MySqlCommand(procName, this.Conn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 int rows_affected = cmd.ExecuteNonQuery();
+                Console.WriteLine($"{rows_affected} Rows Effected By {procName}");
             }
             catch (Exception e)
             {
