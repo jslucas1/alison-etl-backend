@@ -85,10 +85,6 @@ namespace etl.Session
             // Open Connection to the DB
             this.db.Open();
 
-            // Load Current DB data
-            List<ExpandoObject> data = GetAllFromDB();
-            Console.WriteLine($"{data.Count} Sessions Loaded From DB");
-
             // Load Data from the Linx Source 
             List<ExpandoObject> linxData = GetLinxData();
             Console.WriteLine($"{linxData.Count} Linx Sessions Loaded From API Call");
@@ -168,12 +164,5 @@ namespace etl.Session
             return linxData;
         }
 
-        public List<ExpandoObject> GetAllFromDB()
-        {
-            string stm = "select * from `alison`.Session Order by LinxId ASC";
-            List<ExpandoObject> sessions = this.db.Select(stm);
-
-            return sessions;
-        }
     }
 }
