@@ -87,40 +87,24 @@ namespace etl.Session
 
             // Load Data from the Linx Source 
             List<ExpandoObject> linxData = GetLinxData();
-            Console.WriteLine($"{linxData.Count} Linx Sessions Loaded From API Call");
 
             //Delete Data in LINX table
-            DeleteData("DeleteLinxSession");
+            db.StoredProc("DeleteLinxSession");
 
             //Load Data to LINX table from API Call
             LoadLinxTable(linxData);
 
             //Insert new records in LINX table not in Warehouse Table
-            InsertData("InsertWarehouseSession");
+            db.StoredProc("InsertWarehouseSession");
 
             //Delete records in Warehouse that is not in LINX table
-            DeleteData("DeleteWarehouseSession");
+            db.StoredProc("DeleteWarehouseSession");
 
             //Update records in Warehouse based on data in LINX table
-            UpdateData("UpdateWarehouseSession");
+            db.StoredProc("UpdateWarehouseSession");
 
             // Close Connection to the DB
             this.db.Close();
-        }
-
-        public void InsertData(string insert_proc_name)
-        {
-            this.db.StoredProc(insert_proc_name);
-        }
-
-        public void DeleteData(string delete_proc_name)
-        {
-            this.db.StoredProc(delete_proc_name);
-        }
-
-        public void UpdateData(string update_proc_name)
-        {
-            this.db.StoredProc(update_proc_name);
         }
 
         public void LoadLinxTable(List<ExpandoObject> linxData)
@@ -143,13 +127,14 @@ namespace etl.Session
                     {"@EndDate", item.endDate},
                     {"@TermName", item.term.name},
                 };
-                this.db.Insert(stm, values);
+                db.Insert(stm, values);
             }
         }
 
+        // TODO Update with API source
         public List<ExpandoObject> GetLinxData()
         {
-            List<ExpandoObject> linxData = new List<ExpandoObject>();
+            // ApiManager api = new ApiManager();
 
             // Find path of the linx data file
             // string workingDirectory = Environment.CurrentDirectory;
@@ -159,7 +144,7 @@ namespace etl.Session
 
             StreamReader inFile = new StreamReader(filePath);
             string json = inFile.ReadToEnd();
-            linxData = JsonConvert.DeserializeObject<List<ExpandoObject>>(json);
+            List<ExpandoObject> linxData = JsonConvert.DeserializeObject<List<ExpandoObject>>(json);
 
             return linxData;
         }
