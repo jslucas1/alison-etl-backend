@@ -69,25 +69,15 @@ namespace etl
 
         public void Insert(string query, Dictionary<string, object> values)
         {
-            try
-            {
-                using var cmd = new MySqlCommand(query, this.Conn);
-                foreach (var p in values)
-                {
-                    cmd.Parameters.AddWithValue(p.Key, p.Value);
-                }
-
-                cmd.Prepare();
-                cmd.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error Inserting Data");
-                Console.WriteLine(e.Message);
-            }
+            QueryWithData(query, values);
         }
 
         public void Update(string query, Dictionary<string, object> values)
+        {
+            QueryWithData(query, values);
+        }
+
+        private void QueryWithData(string query, Dictionary<string, object> values)
         {
             try
             {
