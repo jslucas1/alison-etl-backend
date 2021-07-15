@@ -18,10 +18,8 @@ namespace etl.Session
     public class SessionETL : IEtl
     {
         private Database db;
-        private DateTime now;
-        private int jobPipelineId;
-
         private int pipelineId;
+        private string dtFormat = "yyyy-MM-dd HH:mm:ss";
 
         public SessionETL()
         {
@@ -30,11 +28,8 @@ namespace etl.Session
 
         public bool ShouldRun()
         {
-            string stm = "select * from `alison-etl`.ETLJobPipeline a, ";
-            stm += "              `alison-etl`.ETLPipeline b";
-            stm += "         where a.Status = \"Active\" AND b.Name = \"Sessions\" AND a.PipelineId = b.Id";
-
-            List<ExpandoObject> pipelines = null;
+            string stm = "select * from `alison-etl`.Pipeline where name = \"Session\"";
+            List<ExpandoObject> pipelines = new();
 
             try
             {
@@ -44,37 +39,40 @@ namespace etl.Session
             }
             catch
             {
+                
                 Console.WriteLine("Error Pulling Pipelines Data");
                 return false;
             }
 
             foreach (dynamic pipeline in pipelines)
             {
-                if (pipeline.LastCompletedTime == null)
+
+                Console.WriteLine($"Working on Pipeline {pipeline.Id}, {pipeline.Name}");
+                pipelineId = pipeline.Id;
+
+                if (pipeline.Status == "Inactive") // Dont work on deactivated pipelines
+                {
+                    return false;
+                }
+
+                if (pipeline.LastStart.Equals(DBNull.Value)) // Never run
+                {
+
+                    return true;
+                }
+
+                else if (pipeline.LastCompleted.Equals(DBNull.Value)) // currently running
                 {
                     return false;
                 }
                 else
                 {
-                    now = DateTime.Now;
-                    DateTime lastStartDate = new DateTime();
-                    if (pipeline.LastStartDate != null && pipeline.LastStartTime != null)
-                    {
-                        string[] tempStartDate = pipeline.LastStartDate.Split('/');
-                        int month = int.Parse(tempStartDate[0]);
-                        int day = int.Parse(tempStartDate[1]);
-                        int year = int.Parse(tempStartDate[2]);
-                        string[] tempStartTime = pipeline.LastStartTime.Split(':');
-                        int hour = int.Parse(tempStartTime[0]);
-                        int minute = int.Parse(tempStartTime[1]);
-                        int second = Convert.ToInt32(double.Parse(tempStartTime[2]));
-
-                        lastStartDate = new DateTime(year, month, day, hour, minute, second);
-                    }
-                    TimeSpan ts = now - lastStartDate;
+                    DateTime now = DateTime.Now;
+                    DateTime lastStart = DateTime.Parse(pipeline.LastStart);
+                    TimeSpan ts = now - lastStart;
+                    Console.WriteLine($"{Math.Round(ts.TotalMinutes,2)} minutes since last sync");
                     if (ts.TotalMinutes >= pipeline.ScheduledMinutes)
                     {
-                        jobPipelineId = pipeline.Id;
                         return true;
                     }
                 }
@@ -104,7 +102,6 @@ namespace etl.Session
             LoadLinxTable(linxData);
 
             //Update History Tracking Table
-            now = DateTime.Now;
             UpdatePipelineHistory("Extract", "Complete");
             UpdatePipelineHistory("Load", "Inprocess");
 
@@ -118,7 +115,6 @@ namespace etl.Session
             db.StoredProc("UpdateWarehouseSession");
 
             //Update History Tracking Table
-            now = DateTime.Now;
             UpdatePipelineHistory("Load", "Complete");
             UpdatePipelineFinish();
 
@@ -156,9 +152,9 @@ namespace etl.Session
             // ApiManager api = new ApiManager();
 
             // Find path of the linx data file
-            // string workingDirectory = Environment.CurrentDirectory;
-            // string filePath = $"{Directory.GetParent(workingDirectory).Parent.Parent.FullName}/SessionResponse.txt";
-            string filePath = "SessionResponse.txt";
+            string workingDirectory = Environment.CurrentDirectory;
+            string filePath = $"{Directory.GetParent(workingDirectory).Parent.Parent.FullName}/SessionResponse.txt";
+            // string filePath = "SessionResponse.txt";
 
 
             StreamReader inFile = new StreamReader(filePath);
@@ -170,66 +166,52 @@ namespace etl.Session
 
         private void UpdatePipelineStart()
         {
-
             Console.WriteLine("About to Update pipeline start data");
 
-            string stm = "UPDATE `alison-etl`.ETLJobPipeline ";
-            stm += "SET LastStartDate = @LastStartDate, LastStartTime = @LastStartTime ";
-            stm += "WHERE PipelineId = @PipelineId AND Status = 'Active'";
-            string lastStartDate = now.Month + "/" + now.Day + "/" + now.Year;
-            string lastStartTime = now.Hour + ":" + now.Minute + ":" + now.Second;
+            string stm = "UPDATE `alison-etl`.Pipeline SET LastStart = @LastStart, LastCompleted = null WHERE Id = @Id";
+            string lastStart = DateTime.Now.ToString(dtFormat);
 
-            var values = new Dictionary<string, object>()
-                {
-                    {"@PipelineId", pipelineId},
-                    {"@LastStartDate", lastStartDate},
-                    {"@LastStartTime", lastStartTime},
-
-                };
+            var values = new Dictionary<string, object>() 
+            { 
+                {"@Id", pipelineId}, 
+                {"@LastStart", lastStart} 
+            };
+            
             db.Update(stm, values);
         }
 
         private void UpdatePipelineFinish()
         {
-
             Console.WriteLine("About to Update pipeline Completed Time");
+            string stm = "UPDATE `alison-etl`.Pipeline SET LastCompleted = @LastCompleted WHERE Id = @Id";
 
-            string stm = "UPDATE `alison-etl`.ETLJobPipeline ";
-            stm += "SET LastCompletedTime = @LastCompletedTime ";
-            stm += "WHERE PipelineId = @PipelineId AND Status = 'Active'";
-            string lastCompletedTime = now.Hour + ":" + now.Minute + ":" + now.Second;
+            string lastCompleted = DateTime.Now.ToString(dtFormat);
+
+            var values = new Dictionary<string, object>()
+            {
+                {"@Id", pipelineId}, 
+                {"@LastCompleted", lastCompleted}
+            };
+            db.Update(stm, values);
+        }
+
+        private void UpdatePipelineHistory(string step, string status)
+        {
+            Console.WriteLine("About to Insert " + step + " " + status + " into history");
+
+            string stm = "INSERT INTO `alison-etl`.PipelineStatus (PipelineId, Step, Status, TimeStamp)";
+            stm += "values (@PipelineId, @Step, @Status, @TimeStamp)";
+
+            string timestamp = DateTime.Now.ToString(dtFormat);
 
             var values = new Dictionary<string, object>()
                 {
                     {"@PipelineId", pipelineId},
-                    {"@LastCompletedTime", lastCompletedTime},
-
-                };
-            db.Update(stm, values);
-        }
-        private void UpdatePipelineHistory(string step, string status)
-        {
-
-            Console.WriteLine("About to Insert " + step + " " + status + " into history");
-
-            string stm = "INSERT INTO `alison-etl`.ETLJobPipelineStatus ";
-            stm += "(ETLJobPipelineId, Step, Status, Date, TimeStamp) ";
-            stm += "values (@JobPipelineId, @Step, '@Status', @StartDate, @StartTime)";
-            string date = now.Month + "/" + now.Day + "/" + now.Year;
-            string time = now.Hour + ":" + now.Minute + ":" + now.Second;
-
-            var values = new Dictionary<string, object>()
-                {
-                    {"@JobPipelineId", jobPipelineId},
                     {"@Step", step},
                     {"@Status", status},
-                    {"@StartDate", date},
-                    {"@StartTime", time},
-
+                    {"@TimeStamp", timestamp}
                 };
             db.Insert(stm, values);
-
         }
-
     }
 }

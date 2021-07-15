@@ -13,7 +13,7 @@ namespace etl.Session
     public class SessionPipeline : IPipeline
     {
         private readonly string pipelineName = "Session";
-        private int checkInSeconds = 15;
+        private int checkInSeconds = 60;
         private Timer timer;
 
         public Task StartAsync(CancellationToken cancellationToken)
