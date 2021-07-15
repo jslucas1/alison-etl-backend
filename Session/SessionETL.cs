@@ -18,6 +18,10 @@ namespace etl.Session
     public class SessionETL : IEtl
     {
         private Database db;
+        private DateTime now;
+        private int jobPipelineId;
+
+        private int pipelineId;
 
         public SessionETL()
         {
@@ -52,7 +56,7 @@ namespace etl.Session
                 }
                 else
                 {
-                    DateTime now = DateTime.Now;
+                    now = DateTime.Now;
                     DateTime lastStartDate = new DateTime();
                     if (pipeline.LastStartDate != null && pipeline.LastStartTime != null)
                     {
@@ -70,6 +74,7 @@ namespace etl.Session
                     TimeSpan ts = now - lastStartDate;
                     if (ts.TotalMinutes >= pipeline.ScheduledMinutes)
                     {
+                        jobPipelineId = pipeline.Id;
                         return true;
                     }
                 }
@@ -85,7 +90,11 @@ namespace etl.Session
             // Open Connection to the DB
             this.db.Open();
 
-            // Load Data from the Linx Source 
+            //Update Tracking for start of extract
+            UpdatePipelineStart();
+            UpdatePipelineHistory("Extract", "Inprocess");
+
+            // Extract Data from the Linx Source 
             List<ExpandoObject> linxData = GetLinxData();
 
             //Delete Data in LINX table
@@ -93,6 +102,11 @@ namespace etl.Session
 
             //Load Data to LINX table from API Call
             LoadLinxTable(linxData);
+
+            //Update History Tracking Table
+            now = DateTime.Now;
+            UpdatePipelineHistory("Extract", "Complete");
+            UpdatePipelineHistory("Load", "Inprocess");
 
             //Insert new records in LINX table not in Warehouse Table
             db.StoredProc("InsertWarehouseSession");
@@ -102,6 +116,11 @@ namespace etl.Session
 
             //Update records in Warehouse based on data in LINX table
             db.StoredProc("UpdateWarehouseSession");
+
+            //Update History Tracking Table
+            now = DateTime.Now;
+            UpdatePipelineHistory("Load", "Complete");
+            UpdatePipelineFinish();
 
             // Close Connection to the DB
             this.db.Close();
@@ -147,6 +166,69 @@ namespace etl.Session
             List<ExpandoObject> linxData = JsonConvert.DeserializeObject<List<ExpandoObject>>(json);
 
             return linxData;
+        }
+
+        private void UpdatePipelineStart()
+        {
+
+            Console.WriteLine("About to Update pipeline start data");
+
+            string stm = "UPDATE `alison-etl`.ETLJobPipeline ";
+            stm += "SET LastStartDate = @LastStartDate, LastStartTime = @LastStartTime ";
+            stm += "WHERE PipelineId = @PipelineId AND Status = 'Active'";
+            string lastStartDate = now.Month + "/" + now.Day + "/" + now.Year;
+            string lastStartTime = now.Hour + ":" + now.Minute + ":" + now.Second;
+
+            var values = new Dictionary<string, object>()
+                {
+                    {"@PipelineId", pipelineId},
+                    {"@LastStartDate", lastStartDate},
+                    {"@LastStartTime", lastStartTime},
+
+                };
+            db.Update(stm, values);
+        }
+
+        private void UpdatePipelineFinish()
+        {
+
+            Console.WriteLine("About to Update pipeline Completed Time");
+
+            string stm = "UPDATE `alison-etl`.ETLJobPipeline ";
+            stm += "SET LastCompletedTime = @LastCompletedTime ";
+            stm += "WHERE PipelineId = @PipelineId AND Status = 'Active'";
+            string lastCompletedTime = now.Hour + ":" + now.Minute + ":" + now.Second;
+
+            var values = new Dictionary<string, object>()
+                {
+                    {"@PipelineId", pipelineId},
+                    {"@LastCompletedTime", lastCompletedTime},
+
+                };
+            db.Update(stm, values);
+        }
+        private void UpdatePipelineHistory(string step, string status)
+        {
+
+            Console.WriteLine("About to Insert " + step + " " + status + " into history");
+
+            string stm = "INSERT INTO `alison-etl`.ETLJobPipelineStatus ";
+            stm += "(ETLJobPipelineId, Step, Status, Date, TimeStamp) ";
+            stm += "values (@JobPipelineId, @Step, '@Status', @StartDate, @StartTime)";
+            string date = now.Month + "/" + now.Day + "/" + now.Year;
+            string time = now.Hour + ":" + now.Minute + ":" + now.Second;
+
+            var values = new Dictionary<string, object>()
+                {
+                    {"@JobPipelineId", jobPipelineId},
+                    {"@Step", step},
+                    {"@Status", status},
+                    {"@StartDate", date},
+                    {"@StartTime", time},
+
+                };
+            db.Insert(stm, values);
+
         }
 
     }

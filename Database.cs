@@ -87,6 +87,26 @@ namespace etl
             }
         }
 
+        public void Update(string query, Dictionary<string, object> values)
+        {
+            try
+            {
+                using var cmd = new MySqlCommand(query, this.Conn);
+                foreach (var p in values)
+                {
+                    cmd.Parameters.AddWithValue(p.Key, p.Value);
+                }
+
+                cmd.Prepare();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error Inserting Data");
+                Console.WriteLine(e.Message);
+            }
+        }
+
         public void StoredProc(string procName)
         {
             try
@@ -102,5 +122,6 @@ namespace etl
                     Environment.NewLine + e.Message);
             }
         }
+
     }
 }
