@@ -39,93 +39,73 @@ namespace etl.Session
             }
             catch
             {
-                
-                Console.WriteLine("Error Pulling Pipelines Data");
                 return false;
             }
 
             foreach (dynamic pipeline in pipelines)
             {
-
-                Console.WriteLine($"Working on Pipeline {pipeline.Id}, {pipeline.Name}");
                 pipelineId = pipeline.Id;
 
-                if (pipeline.Status == "Inactive") // Dont work on deactivated pipelines
+                if (pipeline.Status == "Inactive") // Dont run inactives pipelines
                 {
                     return false;
                 }
 
                 if (pipeline.LastStart.Equals(DBNull.Value)) // Never run
                 {
-
                     return true;
                 }
-
                 else if (pipeline.LastCompleted.Equals(DBNull.Value)) // currently running
                 {
                     return false;
                 }
-                else
+                else // Do the thing
                 {
                     DateTime now = DateTime.Now;
                     DateTime lastStart = DateTime.Parse(pipeline.LastStart);
                     TimeSpan ts = now - lastStart;
-                    Console.WriteLine($"{Math.Round(ts.TotalMinutes,2)} minutes since last sync");
-                    if (ts.TotalMinutes >= pipeline.ScheduledMinutes)
+                    if (ts.TotalMinutes >= pipeline.ScheduledMinutes) // Has it been enough time? 
                     {
                         return true;
                     }
                 }
             }
-
             return false;
         }
 
         public void DoWork()
         {
-            Console.WriteLine("SessionETL: DoWork()");
+            this.db.Open(); // Open Connection to the DB
 
-            // Open Connection to the DB
-            this.db.Open();
+            UpdatePipelineStart(); // Update Tracking for start
 
-            //Update Tracking for start of extract
-            UpdatePipelineStart();
-            UpdatePipelineHistory("Extract", "Inprocess");
+            UpdatePipelineHistory("Extract", "Inprocess"); // Update History Tracking Table
 
-            // Extract Data from the Linx Source 
-            List<ExpandoObject> linxData = GetLinxData();
+            List<ExpandoObject> linxData = GetLinxData(); // Extract Data from the Linx Source 
 
-            //Delete Data in LINX table
-            db.StoredProc("DeleteLinxSession");
+            db.StoredProc("DeleteLinxSession"); // Delete Data in LINX table
 
-            //Load Data to LINX table from API Call
-            LoadLinxTable(linxData);
+            LoadLinxTable(linxData); // Load Data to LINX table from API Call
 
-            //Update History Tracking Table
-            UpdatePipelineHistory("Extract", "Complete");
-            UpdatePipelineHistory("Load", "Inprocess");
+            UpdatePipelineHistory("Extract", "Complete"); // Update History Tracking Table
 
-            //Insert new records in LINX table not in Warehouse Table
-            db.StoredProc("InsertWarehouseSession");
+            UpdatePipelineHistory("Load", "Inprocess"); // Update History Tracking Table
 
-            //Delete records in Warehouse that is not in LINX table
-            db.StoredProc("DeleteWarehouseSession");
+            db.StoredProc("InsertWarehouseSession"); // Insert new records in LINX table not in Warehouse Table
 
-            //Update records in Warehouse based on data in LINX table
-            db.StoredProc("UpdateWarehouseSession");
+            db.StoredProc("DeleteWarehouseSession"); // Delete records in Warehouse that is not in LINX table
 
-            //Update History Tracking Table
-            UpdatePipelineHistory("Load", "Complete");
-            UpdatePipelineFinish();
+            db.StoredProc("UpdateWarehouseSession"); // Update records in Warehouse based on data in LINX table
 
-            // Close Connection to the DB
-            this.db.Close();
+            UpdatePipelineHistory("Load", "Complete"); // Update History Tracking Table
+
+            UpdatePipelineFinish(); // Update Tracking for finish
+
+            this.db.Close(); // Close Connection to the DB
         }
 
         public void LoadLinxTable(List<ExpandoObject> linxData)
         {
-            Console.WriteLine("About to load the linx data");
-
             string stm = "INSERT INTO `alison-etl`.LINXSession";
             stm += "             (LinxId, LegislativeDays, Name, StartDate, EndDate, TermName)";
             stm += "      VALUES (@LinxId, @LegislativeDays, @Name, @StartDate, @EndDate, @TermName)";
@@ -166,8 +146,6 @@ namespace etl.Session
 
         private void UpdatePipelineStart()
         {
-            Console.WriteLine("About to Update pipeline start data");
-
             string stm = "UPDATE `alison-etl`.Pipeline SET LastStart = @LastStart, LastCompleted = null WHERE Id = @Id";
             string lastStart = DateTime.Now.ToString(dtFormat);
 
@@ -176,15 +154,12 @@ namespace etl.Session
                 {"@Id", pipelineId}, 
                 {"@LastStart", lastStart} 
             };
-            
             db.Update(stm, values);
         }
 
         private void UpdatePipelineFinish()
         {
-            Console.WriteLine("About to Update pipeline Completed Time");
             string stm = "UPDATE `alison-etl`.Pipeline SET LastCompleted = @LastCompleted WHERE Id = @Id";
-
             string lastCompleted = DateTime.Now.ToString(dtFormat);
 
             var values = new Dictionary<string, object>()
@@ -197,20 +172,17 @@ namespace etl.Session
 
         private void UpdatePipelineHistory(string step, string status)
         {
-            Console.WriteLine("About to Insert " + step + " " + status + " into history");
-
-            string stm = "INSERT INTO `alison-etl`.PipelineStatus (PipelineId, Step, Status, TimeStamp)";
-            stm += "values (@PipelineId, @Step, @Status, @TimeStamp)";
-
+            string stm = "INSERT INTO `alison-etl`.PipelineStatus (PipelineId, Step, Status, TimeStamp)" +
+                         " values (@PipelineId, @Step, @Status, @TimeStamp)";
             string timestamp = DateTime.Now.ToString(dtFormat);
 
             var values = new Dictionary<string, object>()
-                {
-                    {"@PipelineId", pipelineId},
-                    {"@Step", step},
-                    {"@Status", status},
-                    {"@TimeStamp", timestamp}
-                };
+            {
+                {"@PipelineId", pipelineId},
+                {"@Step", step},
+                {"@Status", status},
+                {"@TimeStamp", timestamp}
+            };
             db.Insert(stm, values);
         }
     }
