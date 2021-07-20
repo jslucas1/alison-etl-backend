@@ -1,0 +1,68 @@
+[
+				{
+					"id": 1,
+					"chamber": "HOUSE",
+					"isActive": true,
+					"name": "Local Legislation",
+					"type": "STANDING",
+					"clerk": {
+						"displayName": "Jeff Woodard",
+						"email": null
+					}
+				},
+				{
+					"id": 2,
+					"chamber": "HOUSE",
+					"isActive": true,
+					"name": "Public Safety and Homeland Security",
+					"type": "STANDING",
+					"clerk": {
+						"displayName": "John Treadwell",
+						"email": null
+					}
+				},
+				{
+					"id": 3,
+					"chamber": "HOUSE",
+					"isActive": true,
+					"name": "Health",
+					"type": "STANDING",
+					"clerk": {
+						"displayName": "Dustin Jones",
+						"email": null
+					}
+				},
+				{
+					"id": 4,
+					"chamber": "SENATE",
+					"isActive": true,
+					"name": "Veterans and Military Affairs",
+					"type": "STANDING",
+					"clerk": {
+						"displayName": "Richard Byron",
+						"email": "345@roll-call.com"
+					}
+				},
+				{
+					"id": 5,
+					"chamber": "SENATE",
+					"isActive": true,
+					"name": "Tourism",
+					"type": "STANDING",
+					"clerk": {
+						"displayName": "Brian Webb",
+						"email": "brian.webb@al-legislature.gov"
+					}
+				},
+				{
+					"id": 6,
+					"chamber": "SENATE",
+					"isActive": true,
+					"name": "Healthcare",
+					"type": "STANDING",
+					"clerk": {
+						"displayName": "Paula Greene",
+						"email": null
+					}
+				}
+			]
