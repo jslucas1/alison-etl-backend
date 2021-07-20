@@ -13,22 +13,22 @@ using GraphQL.Client.Http;
 using Newtonsoft.Json;
 
 
-namespace etl.Session
+namespace etl.Committee
 {
-    public class SessionETL : IEtl
+    public class CommitteeETL : IEtl
     {
         private Database db;
         private int pipelineId;
         private string dtFormat = "yyyy-MM-dd HH:mm:ss";
 
-        public SessionETL()
+        public CommitteeETL()
         {
             db = new Database();
         }
 
         public bool ShouldRun()
         {
-            string stm = "select * from `alison-etl`.Pipeline where name = \"Session\"";
+            string stm = "select * from `alison-etl`.Pipeline where name = \"Committee\"";
             List<ExpandoObject> pipelines = new();
 
             try
@@ -83,7 +83,7 @@ namespace etl.Session
 
             List<ExpandoObject> linxData = GetLinxData(); // Extract Data from the Linx Source 
 
-            db.StoredProc("DeleteLinxSession"); // Delete Data in LINX table
+            db.StoredProc("DeleteLinxCommittee"); // Delete Data in LINX table
 
             LoadLinxTable(linxData); // Load Data to LINX table from API Call
 
@@ -91,11 +91,11 @@ namespace etl.Session
 
             UpdatePipelineHistory("Load", "Inprocess"); // Update History Tracking Table
 
-            db.StoredProc("InsertWarehouseSession"); // Insert new records in LINX table not in Warehouse Table
+            db.StoredProc("InsertWarehouseCommittee"); // Insert new records in LINX table not in Warehouse Table
 
-            db.StoredProc("DeleteWarehouseSession"); // Delete records in Warehouse that is not in LINX table
+            db.StoredProc("DeleteWarehouseCommittee"); // Delete records in Warehouse that is not in LINX table
 
-            db.StoredProc("UpdateWarehouseSession"); // Update records in Warehouse based on data in LINX table
+            db.StoredProc("UpdateWarehouseCommittee"); // Update records in Warehouse based on data in LINX table
 
             UpdatePipelineHistory("Load", "Complete"); // Update History Tracking Table
 
@@ -106,9 +106,9 @@ namespace etl.Session
 
         public void LoadLinxTable(List<ExpandoObject> linxData)
         {
-            string stm = "INSERT INTO `alison-etl`.LINXSession";
-            stm += "             (LinxId, LegislativeDays, Name, StartDate, EndDate, TermName)";
-            stm += "      VALUES (@LinxId, @LegislativeDays, @Name, @StartDate, @EndDate, @TermName)";
+            string stm = "INSERT INTO `alison-etl`.LINXCommittee";
+            stm += "             (LinxId, Chamber, Name, Type, ClerkName, ClerkEmail)";
+            stm += "      VALUES (@LinxId, @Chamber, @Name, @Type, @ClerkName, @ClerkEmail)";
 
 
             foreach (dynamic item in linxData)
@@ -116,11 +116,11 @@ namespace etl.Session
                 var values = new Dictionary<string, object>()
                 {
                     {"@LinxId", item.id},
-                    {"@LegislativeDays", item.legislativeDays},
+                    {"@Chamber", item.chamber},
                     {"@Name", item.name},
-                    {"@StartDate", item.startDate},
-                    {"@EndDate", item.endDate},
-                    {"@TermName", item.term.name},
+                    {"@Type", item.type},
+                    {"@ClerkName", item.clerk.displayName},
+                    {"@ClerkEmail", item.clerk.email},
                 };
                 db.Insert(stm, values);
             }
@@ -134,7 +134,7 @@ namespace etl.Session
             // Find path of the linx data file
             string workingDirectory = Environment.CurrentDirectory;
             //string filePath = $"{Directory.GetParent(workingDirectory).Parent.Parent.FullName}/SessionResponse.txt";
-            string filePath = "SessionResponse.txt";
+            string filePath = "Committees.txt";
 
 
             StreamReader inFile = new StreamReader(filePath);
