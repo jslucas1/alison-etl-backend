@@ -10,15 +10,15 @@ using Microsoft.Extensions.Logging;
 
 namespace etl.Session
 {
-    public class SessionPipeline : IPipeline
+    public class TestPipeline : IPipeline
     {
-        private readonly string pipelineName = "Session";
-        private int checkInSeconds = 60;
+        private readonly string pipelineName = "Test";
+        private int checkInSeconds = 15;
         private Timer timer;
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            IEtl worker = new SessionETL();
+            IEtl worker = new TestETL();
 
             timer = new Timer(o =>
                 {
