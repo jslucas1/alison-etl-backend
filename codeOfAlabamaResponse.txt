@@ -1,7 +1,4 @@
-{
-	"data": {
-		"codeOfState": {
-			"titles": [
+[
 				{
 					"id": 1,
 					"name": "Title 1",
@@ -1361,6 +1358,3 @@
 					]
 				}
 			]
-		}
-	}
-}

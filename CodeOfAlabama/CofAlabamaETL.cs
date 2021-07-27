@@ -144,33 +144,36 @@ namespace etl.CodeOfAlabama
             }
         }
 
-        private ExpandoObject DenormalizeData(List<ExpandoObject> linxData)
+        private List<ExpandoObject> DenormalizeData(List<ExpandoObject> linxData)
         {
             List<ExpandoObject> returnList = new List<ExpandoObject>();
 
-
             foreach (dynamic titleLevel in linxData)
             {
-                dynamic tempObject;
-                tempObject.titleId = titleLevel.id;
-                tempObject.titleName = titleLevel.name;
-                tempObject.titleDescription = titleLevel.description;
-                tempObject.titleSortOrder = titleLevel.sortOrder;
                 foreach (dynamic chapterLevel in titleLevel.chapters)
                 {
-                    tempObject.chapterId = chapterLevel.id;
-                    tempObject.chapterName = chapterLevel.name;
-                    tempObject.chapterSortOrder = chapterLevel.sortOrder;
-                    tempObject.chapterDescription = chapterLevel.description;
                     foreach (dynamic sectionLevel in chapterLevel.sections)
                     {
-                        tempObject.sectionId = sectionLevel.id;
-                        tempObject.sectionDisplayId = sectionLevel.displayId;
-                        tempObject.sectionName = sectionLevel.name;
-                        tempObject.sectionSortOrder = sectionLevel.sortOrder;
-                        tempObject..sectionDescription = sectionLevel.description;
                         foreach (dynamic contentLevel in sectionLevel.content)
                         {
+                            dynamic tempObject = new ExpandoObject();
+
+                            tempObject.titleId = titleLevel.id;
+                            tempObject.titleName = titleLevel.name;
+                            tempObject.titleDescription = titleLevel.description;
+                            tempObject.titleSortOrder = titleLevel.sortOrder;
+
+                            tempObject.chapterId = chapterLevel.id;
+                            tempObject.chapterName = chapterLevel.name;
+                            tempObject.chapterSortOrder = chapterLevel.sortOrder;
+                            tempObject.chapterDescription = chapterLevel.description;
+
+                            tempObject.sectionId = sectionLevel.id;
+                            tempObject.sectionDisplayId = sectionLevel.displayId;
+                            tempObject.sectionName = sectionLevel.name;
+                            tempObject.sectionSortOrder = sectionLevel.sortOrder;
+                            tempObject.sectionDescription = sectionLevel.description;
+
                             tempObject.contentId = contentLevel.id;
                             tempObject.contentParagraph = contentLevel.paragraph;
                             tempObject.contentSortOrder = contentLevel.sortOrder;

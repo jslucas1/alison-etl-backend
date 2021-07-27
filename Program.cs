@@ -2,6 +2,7 @@
 using etl.Session;
 using etl.Committee;
 using etl.Member;
+using etl.CodeOfAlabama;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -20,7 +21,8 @@ namespace etl
                 .ConfigureServices(services =>
                     services.AddHostedService<SessionPipeline>().
                     AddHostedService<CommitteePipeline>().
-                    AddHostedService<MemberPipeline>()
+                    AddHostedService<MemberPipeline>().
+                    AddHostedService<CofAlabamaPipeline>()
                 );
     }
 }

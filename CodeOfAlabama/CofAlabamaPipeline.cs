@@ -18,7 +18,7 @@ namespace etl.CodeOfAlabama
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            IEtl worker = new CommitteeETL();
+            IEtl worker = new CofAlabamaETL();
 
             timer = new Timer(o =>
                 {
