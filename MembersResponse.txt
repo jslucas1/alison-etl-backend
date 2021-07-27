@@ -1,0 +1,972 @@
+[
+				{
+					"id": "4bd50c99-daa6-473b-9b54-f332952f36d9",
+					"firstName": "Parker",
+					"lastName": "Moore",
+					"email": "pmoore@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "4cd3af64-2545-43b1-992f-2d86edf2ef9b",
+					"firstName": "Berry",
+					"lastName": "Forte",
+					"email": "bforte@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "4dc640c3-fb71-4255-af86-08c63435279d",
+					"firstName": "Tim",
+					"lastName": "Melson",
+					"email": "tmelson@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "4e8c8471-a439-4970-98df-16e685e717f9",
+					"firstName": "Russell",
+					"lastName": "Bedsole",
+					"email": "rbedsole@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "4f67d313-b197-4ef0-be2d-d9aa13ce4baf",
+					"firstName": "Laura",
+					"lastName": "Hall",
+					"email": "lhall@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "505c48e3-1a12-4c8a-9982-3f8d9e74ba77",
+					"firstName": "Steve",
+					"lastName": "Clouse",
+					"email": "sclouse@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "52688699-ae25-46b0-a5bb-4c64554657ac",
+					"firstName": "Reed",
+					"lastName": "Ingram",
+					"email": "ringram@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "558ab855-e71d-4006-906e-cc0a1b471e5a",
+					"firstName": "Mike",
+					"lastName": "Jones",
+					"email": "mjones@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "57766c8b-a4a7-4499-8309-f88fb164402a",
+					"firstName": "Phillip",
+					"lastName": "Pettus",
+					"email": "ppettus@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "58a7f3c5-194f-465d-96b8-cfa0f2558fbd",
+					"firstName": "Sam",
+					"lastName": "Jones",
+					"email": "sjones@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "5b047b8a-1738-4ab0-9898-8f548a3c8b66",
+					"firstName": "Allen",
+					"lastName": "Treadaway",
+					"email": "atreadaway@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "5d17cf0b-65bd-4213-9da9-bd64c9ab1c6a",
+					"firstName": "Jamie",
+					"lastName": "Kiel",
+					"email": "jkiel@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "5eaa4a9a-4fe8-48eb-834f-1804cd6f0917",
+					"firstName": "Jim",
+					"lastName": "Carns",
+					"email": "jcarns@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "65d75dcc-f76b-4c4a-bc39-004ca9fa39e6",
+					"firstName": "Joe",
+					"lastName": "Lovvorn",
+					"email": "jlovvorn@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "66db0a38-d25d-436d-b39f-8c2623e53d9d",
+					"firstName": "Rod",
+					"lastName": "Scott",
+					"email": "rscott@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "68faa5be-bf03-4cb6-a629-7216123ccb3d",
+					"firstName": "Arthur",
+					"lastName": "Orr",
+					"email": "aorr@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "69319daf-2bb5-4136-9b68-1fcb374652bf",
+					"firstName": "J. T.",
+					"lastName": "Waggoner",
+					"email": "jwaggoner@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "6c27ee02-289e-45e5-a278-136c04f11277",
+					"firstName": "John",
+					"lastName": "Rogers",
+					"email": "jrogers@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "6c7a07d0-fb68-47af-8ff1-5e48a11518d1",
+					"firstName": "Thad",
+					"lastName": "McClammy",
+					"email": "tmcclammy@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "6c96af93-9e94-4aff-a2bc-75953c9d56d6",
+					"firstName": "Chris",
+					"lastName": "Blackshear",
+					"email": "cblackshear@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "71b5395e-845f-4343-af3b-c76fc34cc392",
+					"firstName": "Harry",
+					"lastName": "Shiver",
+					"email": "hshiver@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "76e0f281-ebd4-4ccf-b3fa-a4bfa1f787df",
+					"firstName": "Corley",
+					"lastName": "Ellis",
+					"email": "cellis@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "77503d51-ca75-4cd4-ac01-147fd44ae501",
+					"firstName": "Rich",
+					"lastName": "Wingo",
+					"email": "rwingo@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "778fa0e9-27e2-417a-b7db-e61ceac5c6c8",
+					"firstName": "Danny",
+					"lastName": "Crawford",
+					"email": "dcrawford@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "792e5455-7737-4490-864b-cb9d2ba01fa0",
+					"firstName": "Brett",
+					"lastName": "Easterbrook",
+					"email": "beasterbrook@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "7b841213-98aa-43df-b00b-a8ec25928e13",
+					"firstName": "Clyde",
+					"lastName": "Chambliss",
+					"email": "cchambliss@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "7b91d2b2-3086-4916-93b4-16f6b2487b1f",
+					"firstName": "Craig",
+					"lastName": "Lipscomb",
+					"email": "clipscomb@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "7c3a5daa-cdaa-40bb-8e0f-53a17934b02e",
+					"firstName": "Margie",
+					"lastName": "Wilcox",
+					"email": "mwilcox@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "7cc37ad2-ca7a-441e-ab44-f115c0737002",
+					"firstName": "Jim",
+					"lastName": "Hill",
+					"email": "jhill@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "7e9acffa-957f-4e03-8525-0cb99181b6d7",
+					"firstName": "Danny",
+					"lastName": "Garrett",
+					"email": "dgarrett@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "7fe451f5-2e45-40d5-9ae5-14162445118c",
+					"firstName": "Andrew",
+					"lastName": "Jones",
+					"email": "ajones@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "8100d8dd-7ea2-4a1e-a7de-33bba665f949",
+					"firstName": "Shay",
+					"lastName": "Shelnutt",
+					"email": "sshelnutt@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "83db115f-cd5e-4500-98b6-5a00f0676da7",
+					"firstName": "Kelvin",
+					"lastName": "Lawrence",
+					"email": "klawrence@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "88695b36-346f-466a-bb9d-d3503388d3e3",
+					"firstName": "Jimmy",
+					"lastName": "Holley",
+					"email": "jholley@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "88f67fac-9900-4581-82f6-ee77e0ead70b",
+					"firstName": "David",
+					"lastName": "Faulkner",
+					"email": "dfaulkner@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "8a3ab995-a6ec-4824-829b-1260e1fb0235",
+					"firstName": "Ed",
+					"lastName": "Oliver",
+					"email": "eoliver@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "8c418c2d-0aa7-46d2-8066-b1a07aaa29a2",
+					"firstName": "Chip",
+					"lastName": "Brown",
+					"email": "cbrown@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "8d4c1065-bfb0-4e7a-85ee-f596404f8657",
+					"firstName": "Steve",
+					"lastName": "McMillan",
+					"email": "smcmillan@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "8d50669b-f355-4f23-bace-858c21b3c249",
+					"firstName": "Will",
+					"lastName": "Barfoot",
+					"email": "wbarfoot@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "8de48b4b-02d9-4773-be10-5f88e4750910",
+					"firstName": "Connie",
+					"lastName": "Rowe",
+					"email": "crowe@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "8e83b954-c606-4029-8161-90aca41487a8",
+					"firstName": "Kerry",
+					"lastName": "Rich",
+					"email": "krich@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "8f7cea16-53a5-4880-bad1-c40e7a2e3c8a",
+					"firstName": "Clay",
+					"lastName": "Scofield",
+					"email": "cscofield@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "91f4bd4e-527c-4be0-a9ff-072a6e7dc588",
+					"firstName": "Kirk",
+					"lastName": "Hatcher",
+					"email": "khatcher@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "92f17555-00c1-4652-b811-6c4c4c39b270",
+					"firstName": "Gerald",
+					"lastName": "Allen",
+					"email": "gallen@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "949574bf-e895-4ec2-b131-05d4ea4f4d16",
+					"firstName": "Victor",
+					"lastName": "Gaston",
+					"email": "vgaston@alabama.gov",
+					"phone": "",
+					"title": "Speaker",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "98ebcb22-9416-462a-ad5d-e2010ae12f3f",
+					"firstName": "Jack",
+					"lastName": "W. Williams",
+					"email": "jw_williams@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "9b9593bd-33fa-47a2-8087-e5a654773099",
+					"firstName": "Merika",
+					"lastName": "Coleman",
+					"email": "mcoleman@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "a141894b-57e7-4def-bf3f-dfd71fdc314f",
+					"firstName": "Will",
+					"lastName": "Dismukes",
+					"email": "wdismukes@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "a1958018-fb1d-4ba0-ad42-dc3d1bb7a632",
+					"firstName": "Rodney",
+					"lastName": "Sullivan",
+					"email": "rsullivan@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "a2075457-cf65-4396-a668-1bcbd88351ba",
+					"firstName": "Dan",
+					"lastName": "Roberts",
+					"email": "droberts@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "a69f801f-fd5d-429c-ba2e-ae0c0f38d603",
+					"firstName": "Del",
+					"lastName": "Marsh",
+					"email": "dmarsh@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "a8df256e-2fb0-4c92-b143-fb9688630ca2",
+					"firstName": "Malika",
+					"lastName": "Sanders-Fortier",
+					"email": "msanders-fortier@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "aa0ad197-5906-486e-8def-3898a22f44ff",
+					"firstName": "Jim",
+					"lastName": "McClendon",
+					"email": "jmcclendon@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "aa5ef4a5-ff09-4917-a38b-dff859a7111f",
+					"firstName": "Steve",
+					"lastName": "Hurst",
+					"email": "shurst@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "ae592705-86a9-4a1f-b548-9505f783aa9f",
+					"firstName": "Jeff",
+					"lastName": "Sorrells",
+					"email": "jsorrells@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "b0ceed6e-4a37-4b6e-8e7c-319dd54863b2",
+					"firstName": "David",
+					"lastName": "Sessions",
+					"email": "dsessions@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "b228bcd0-f21c-4173-9db7-cab1b22abd3a",
+					"firstName": "Randall",
+					"lastName": "Shedd",
+					"email": "rshedd@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "b4c41d2d-c55f-44ea-95a3-37a3946c2acf",
+					"firstName": "Wes",
+					"lastName": "Kitchens",
+					"email": "wkitchens@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "b782c068-74da-4b0c-833f-48a3391b669c",
+					"firstName": "Nathaniel",
+					"lastName": "Ledbetter",
+					"email": "nledbetter@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "b930c158-70f3-40cb-a662-5a6012ee2f88",
+					"firstName": "Proncey",
+					"lastName": "Robertson",
+					"email": "probertson@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "b94e62fe-9668-406f-8168-1bd882d08146",
+					"firstName": "Randy",
+					"lastName": "Wood",
+					"email": "rwood@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "baba19cb-bcb8-413d-a278-46707eb30e4e",
+					"firstName": "Pebblin",
+					"lastName": "Warren",
+					"email": "pwarren@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "bb27580e-3c26-4a37-a01c-4e4c8974de0f",
+					"firstName": "Juandalynn",
+					"lastName": "Givan",
+					"email": "jgivan@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "bb2dcae6-7211-453e-a5b5-c56536310d5e",
+					"firstName": "Rex",
+					"lastName": "Reynolds",
+					"email": "rreynolds@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "bd22dc7b-54dd-486b-8b0d-d8b1a1824023",
+					"firstName": "Matt",
+					"lastName": "Simpson",
+					"email": "msimpson@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "bf064cc0-8e7a-4044-93ad-71d788d28941",
+					"firstName": "Bill",
+					"lastName": "Poole",
+					"email": "bpoole@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "c0438d3b-9f3a-48d0-9b73-8d8bd40ec903",
+					"firstName": "Greg",
+					"lastName": "Reed",
+					"email": "greed@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "c1dda9a8-89d3-4ad5-bbae-781587062054",
+					"firstName": "K. L.",
+					"lastName": "Brown",
+					"email": "kbrown@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "c32f58ed-b1ce-4891-9cdf-8e71eac1920b",
+					"firstName": "Priscilla",
+					"lastName": "Dunn",
+					"email": "pdunn@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "c4316b15-5823-42bd-b527-f4c7b4bd901d",
+					"firstName": "Paul",
+					"lastName": "Lee",
+					"email": "plee@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "c863e3a0-bad2-4afd-9632-b25d0f74552d",
+					"firstName": "Alan",
+					"lastName": "Baker",
+					"email": "abaker@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "ca535612-6894-402d-9a8f-569a4c48acf9",
+					"firstName": "Napoleon",
+					"lastName": "Bracy Jr.",
+					"email": "nbracy_jr.@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "cc823800-26da-4db9-8620-626ea3703afc",
+					"firstName": "Louise",
+					"lastName": "Alexander",
+					"email": "lalexander@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "ccd27449-e7ec-489c-8642-c198d27fc18b",
+					"firstName": "Shane",
+					"lastName": "Stringer",
+					"email": "sstringer@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "ce78b621-e8eb-48a1-83bf-8de31ef3941f",
+					"firstName": "Mac",
+					"lastName": "McCutcheon",
+					"email": "mmccutcheon@alabama.gov",
+					"phone": "",
+					"title": "Speaker",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "cea950c9-e8bb-424d-abeb-021c12bdb26a",
+					"firstName": "Allen",
+					"lastName": "Farley",
+					"email": "afarley@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "d253274c-cc96-4a7a-b885-4248410e92c5",
+					"firstName": "Mike",
+					"lastName": "Ball",
+					"email": "mball@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "d396877f-ef69-4fd7-9c98-dd0136b2e589",
+					"firstName": "Greg",
+					"lastName": "Albritton",
+					"email": "galbritton@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "d50d135a-7470-4973-8789-473f6d203ed9",
+					"firstName": "Mike",
+					"lastName": "Holmes",
+					"email": "mholmes@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "d70d36d3-6653-4ff1-8190-c258b600944f",
+					"firstName": "Steve",
+					"lastName": "Livingston",
+					"email": "slivingston@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "d79396ca-3707-439a-824f-40c8740bc4c6",
+					"firstName": "Howard",
+					"lastName": "Sanderford",
+					"email": "hsanderford@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "dd645694-cc69-4bd5-bf62-970abfe4a24f",
+					"firstName": "Debbie",
+					"lastName": "Wood",
+					"email": "dwood@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "dda02a56-dd1c-440b-a4ce-d9948e932a5c",
+					"firstName": "Billy",
+					"lastName": "Beasley",
+					"email": "bbeasley@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "e061ba00-018b-4295-89b9-d63abd739ae9",
+					"firstName": "Dickie",
+					"lastName": "Drake",
+					"email": "ddrake@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "e1dffa7f-7bb8-45a3-b0b8-c8ed84cf3890",
+					"firstName": "Bob",
+					"lastName": "Fincher",
+					"email": "bfincher@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "e41ab0a8-8a00-4275-92e1-0c2fda4e4626",
+					"firstName": "Adline",
+					"lastName": "Clarke",
+					"email": "aclarke@alabama.gov",
+					"phone": "",
+					"title": "Senior",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "e604fb1f-92d8-40f6-ab9b-331a48c923e9",
+					"firstName": "Tommy",
+					"lastName": "Hanes",
+					"email": "thanes@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "e62d6a13-1e2f-4a58-bd8b-c7b93052f2a6",
+					"firstName": "Tim",
+					"lastName": "Wadsworth",
+					"email": "twadsworth@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "e8d33a66-b1c7-4cfa-924c-6090cff1f810",
+					"firstName": "Tom",
+					"lastName": "Butler",
+					"email": "tbutler@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "eb45c379-71f9-4af5-84d9-fc0a7e31740b",
+					"firstName": "Tom",
+					"lastName": "Whatley",
+					"email": "twhatley@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "ec147666-6ba0-4321-b03b-870ae6ce9847",
+					"firstName": "Linda",
+					"lastName": "Coleman-Madison",
+					"email": "lcoleman-madison@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "ef8f4b82-3e6e-4047-a9de-d2522b419d15",
+					"firstName": "Randy",
+					"lastName": "Price",
+					"email": "rprice@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				},
+				{
+					"id": "f3cc00af-0075-48ce-87c1-d3fd827d636f",
+					"firstName": "David",
+					"lastName": "Standridge",
+					"email": "dstandridge@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "f56b0861-8a97-451c-9a6f-a7a86bbf0d55",
+					"firstName": "Rolanda",
+					"lastName": "Hollis",
+					"email": "rhollis@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "fa9bb48c-9b19-49db-9079-09ca78d38929",
+					"firstName": "Artis",
+					"lastName": "J. McCampbell",
+					"email": "aj_mccampbell@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "fc29ba79-af91-4935-9ff5-70b162a6c3dc",
+					"firstName": "Joe",
+					"lastName": "Faust",
+					"email": "jfaust@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "HOUSE",
+					"isActive": true
+				},
+				{
+					"id": "fe0318f8-ace5-497a-9514-6b09361b1ea0",
+					"firstName": "Sam",
+					"lastName": "Givhan",
+					"email": "sgivhan@alabama.gov",
+					"phone": "",
+					"title": "",
+					"legislativeBranch": "SENATE",
+					"isActive": true
+				}
+			]

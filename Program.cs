@@ -1,6 +1,7 @@
 ﻿using System.Net.Security;
 using etl.Session;
 using etl.Committee;
+using etl.Member;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -18,7 +19,8 @@ namespace etl
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices(services =>
                     services.AddHostedService<SessionPipeline>().
-                    AddHostedService<CommitteePipeline>()
+                    AddHostedService<CommitteePipeline>().
+                    AddHostedService<MemberPipeline>()
                 );
     }
 }

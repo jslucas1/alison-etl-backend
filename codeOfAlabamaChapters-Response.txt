@@ -1,0 +1,1361 @@
+{
+	"data": {
+		"codeOfState": {
+			"titles": [
+				{
+					"id": 1,
+					"name": "Title 1",
+					"description": "General Provisions.",
+					"sortOrder": 1,
+					"chapters": [
+						{
+							"id": 1,
+							"name": "Chapter 2",
+							"description": "State Symbols and Honors.",
+							"sections": [
+								{
+									"id": 1,
+									"displayId": "1-2-15",
+									"name": "Section 1-2-15",
+									"sortOrder": 15,
+									"description": "Poet Laureate.",
+									"content": [
+										{
+											"id": 1,
+											"paragraph": "There shall be the honorary office of Poet Laureate of Alabama.",
+											"sortOrder": 1
+										},
+										{
+											"id": 93,
+											"paragraph": "The Poet Laureate of Alabama may be entitled to wear upon his person as an insignia of the office a small gold medal simulating in design an open book, upon which may be inscribed the title of the office, the name of the incumbent and the date of the commission issued by the Governor, said medal to be provided by the Alabama Writers' Conclave from its own funds.",
+											"sortOrder": 5
+										},
+										{
+											"id": 94,
+											"paragraph": "No salary or other emoluments of a monetary nature shall be paid to the Poet Laureate of Alabama by the state by virtue of said office.",
+											"sortOrder": 4
+										},
+										{
+											"id": 95,
+											"paragraph": "The term of office of Poet Laureate of Alabama shall be indeterminate. Vacancies shall be filled by the method described in the preceding paragraph.",
+											"sortOrder": 3
+										},
+										{
+											"id": 96,
+											"paragraph": "The Writers' Conclave, a voluntary organization of Alabama historians, playwrights, fiction writers, poets and newspaper writers, may at any annual meeting of said Writers' Conclave, designate a suitable person to hold the honorary office of Poet Laureate of Alabama; and, upon the election of a nominee by a majority of the membership present and voting, the same may be certified to the Governor of Alabama by the president of said Writers' Conclave as duly elected to the position, whereupon the Governor shall issue a commission to said Poet Laureate, bearing the Great Seal of the State of Alabama.",
+											"sortOrder": 2
+										}
+									]
+								},
+								{
+									"id": 13,
+									"displayId": "1-2-41",
+									"name": "Section 1-2-41",
+									"sortOrder": 41,
+									"description": "State cake.",
+									"content": [
+										{
+											"id": 116,
+											"paragraph": "The Lane Cake, which originated in Clayton, Alabama, is designated as the official State Cake of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 14,
+									"displayId": "1-2-40",
+									"name": "Section 1-2-40",
+									"sortOrder": 40,
+									"description": "State agricultural insect.",
+									"content": [
+										{
+											"id": 117,
+											"paragraph": "The queen honey bee is hereby named and designated as the official agricultural insect for the State of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 15,
+									"displayId": "1-2-39",
+									"name": "Section 1-2-39",
+									"sortOrder": 39,
+									"description": "State crustacean.",
+									"content": [
+										{
+											"id": 118,
+											"paragraph": "The Brown Shrimp, family Penaeidae, order Descapoda, species Penaeus aztecus, is designated as the official State Crustacean of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 35,
+									"displayId": "1-2-38",
+									"name": "Section 1-2-38",
+									"sortOrder": 38,
+									"description": "State marine mammal.",
+									"content": [
+										{
+											"id": 119,
+											"paragraph": "The West Indian Manatee, family Trichechidae, order Sirenia, species Trichechus manatus, is hereby designated as the official state marine mammal of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 37,
+									"displayId": "1-2-37",
+									"name": "Section 1-2-37",
+									"sortOrder": 37,
+									"description": "State tree fruit.",
+									"content": [
+										{
+											"id": 120,
+											"paragraph": "The Peach, Rosaceae, genus Prunus, species P. persica, is hereby designated as the official state tree fruit of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 38,
+									"displayId": "1-2-35",
+									"name": "Section 1-2-35",
+									"sortOrder": 35,
+									"description": "State fruit.",
+									"content": [
+										{
+											"id": 122,
+											"paragraph": "The Blackberry, Rubus, R. occidentalis, is hereby designated and named as the official fruit of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 39,
+									"displayId": "1-2-1",
+									"name": "Section 1-2-1",
+									"sortOrder": 1,
+									"description": "General description.",
+									"content": [
+										{
+											"id": 77,
+											"paragraph": "Alabama shall have an official coat of arms which shall be as follows: a shield upon which is carried the flags of four of the five nations which have at various times held sovereignty over a part or the whole of what is now the State of Alabama: Spain, France, Great Britain and the Confederacy. The union binding these flags shall be the shield of the United States. The shield upon which the flags and shield of the United States are placed shall be supported on either side by an eagle. The crest of the coat of arms shall be a ship representing the \"Badine\" which brought the French colonists who established the first permanent white settlements in the state. Beneath the shield there shall be a scroll containing the sentence in Latin: \"Audemus jura nostra defendere,\" the English interpretation of which is \"We Dare Maintain Our Rights.\" The word \"Alabama\" shall appear beneath the state motto.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 40,
+									"displayId": "1-2-2",
+									"name": "Section 1-2-2",
+									"sortOrder": 2,
+									"description": "Description in heraldic terms.",
+									"content": [
+										{
+											"id": 78,
+											"paragraph": "The coat of arms of Alabama as described in heraldic terms shall be as follows: arms: quarterly, the first azure three fleur de lis or (for France); second quarterly first and fourth gules a tower tripple towered or, second and third argent a lion rampant gules (for Spain); third azure a saltire argent and gules over all a cross of the last fimbriated of the second (for Great Britain); fourth gules of a saltire azure, fimbriated argent 13 mullets of the last (for the Confederacy); at center in escutcheon chief azure paly argent and gules 13 (for United States) arms supported by two American eagles displayed. Crest: A full rigged ship proper.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 41,
+									"displayId": "1-2-3",
+									"name": "Section 1-2-3",
+									"sortOrder": 3,
+									"description": "Use.",
+									"content": [
+										{
+											"id": 79,
+											"paragraph": "The official coat of arms of the State of Alabama shall be placed above the speaker's stand in each house of the Alabama Legislature, in the office of the Governor of the state, in the Department of Archives and History and any other department or institution, and shall be used for any other purpose conforming with the dignity of the coat of arms of the state upon approval of the Governor.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 42,
+									"displayId": "1-2-4",
+									"name": "Section 1-2-4",
+									"sortOrder": 4,
+									"description": "Great Seal of the State.",
+									"content": [
+										{
+											"id": 80,
+											"paragraph": "The seal shall be circular, and the diameter thereof two and a quarter inches; near the edge of the circle shall be the word \"Alabama,\" and opposite this word, at the same distance from the edge, shall be the words, \"Great Seal.\" In the center of the seal there shall be a representation of a map of the state with its principal rivers. The seal shall be called the \"Great Seal of the State of Alabama.\" The seal shall be kept and used as required by the Constitution and laws.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 43,
+									"displayId": "1-2-5",
+									"name": "Section 1-2-5",
+									"sortOrder": 5,
+									"description": "Description.",
+									"content": [
+										{
+											"id": 81,
+											"paragraph": "The flag of the State of Alabama shall be a crimson cross of St. Andrew on a field of white. The bars forming the cross shall be not less than six inches broad, and must extend diagonally across the flag from side to side.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 44,
+									"displayId": "1-2-6",
+									"name": "Section 1-2-6",
+									"sortOrder": 6,
+									"description": "Display.",
+									"content": [
+										{
+											"id": 82,
+											"paragraph": "The flag of the state shall be hoisted on the dome of the Capitol when the two houses of the Legislature are in session, and shall be used by the state on all occasions when it may be necessary or customary to display a flag, except when, in the opinion of the Governor, the national flag should be displayed.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 45,
+									"displayId": "1-2-16",
+									"name": "Section 1-2-16",
+									"sortOrder": 16,
+									"description": "State song.",
+									"content": [
+										{
+											"id": 76,
+											"paragraph": "The poem \"Alabama,\" a gift to the people of the state from Julia S. Tutwiler, together with the original music written for such poem by Edna Gockel-Gussen, which music has been approved and adopted by the Alabama Federation of Music Clubs, is hereby adopted as the state song of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 46,
+									"displayId": "1-2-7",
+									"name": "Section 1-2-7",
+									"sortOrder": 7,
+									"description": "State bird.",
+									"content": [
+										{
+											"id": 83,
+											"paragraph": "The bird commonly called the yellow-hammer is hereby designated the state bird.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 47,
+									"displayId": "1-2-9",
+									"name": "Section 1-2-9",
+									"sortOrder": 9,
+									"description": "State fresh water fish.",
+									"content": [
+										{
+											"id": 85,
+											"paragraph": "The largemouth bass, Micropterus punctulatus, is hereby designated and named the official fresh water fish of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 48,
+									"displayId": "1-2-10",
+									"name": "Section 1-2-10",
+									"sortOrder": 10,
+									"description": "State horse.",
+									"content": [
+										{
+											"id": 86,
+											"paragraph": "The racking horse is hereby designated and named the official state horse of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 49,
+									"displayId": "1-2-11",
+									"name": "Section 1-2-11",
+									"sortOrder": 11,
+									"description": "State flower; state wildflower.",
+									"content": [
+										{
+											"id": 87,
+											"paragraph": "(a) The camellia, Camellia japonica L., is hereby designated and named as the official state flower of Alabama.",
+											"sortOrder": 1
+										},
+										{
+											"id": 88,
+											"paragraph": "(b) The oak-leaf hydrangea, Hydrangea quercifolia Bartr., is hereby designated and named as the official state wildflower of Alabama.",
+											"sortOrder": 2
+										},
+										{
+											"id": 89,
+											"paragraph": "(c) Specimens of the state flower and the state wildflower shall be deposited in the Auburn University Herbarium.",
+											"sortOrder": 3
+										}
+									]
+								},
+								{
+									"id": 50,
+									"displayId": "1-2-12",
+									"name": "Section 1-2-12",
+									"sortOrder": 12,
+									"description": "State tree.",
+									"content": [
+										{
+											"id": 90,
+											"paragraph": "The southern longleaf pine, Pinus palustris Miller, is hereby designated and named as the official state tree of Alabama. A specimen of the state tree shall be deposited in the Auburn University Herbarium, which is the State Herbarium for Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 51,
+									"displayId": "1-2-13",
+									"name": "Section 1-2-13",
+									"sortOrder": 13,
+									"description": "Official mineral.",
+									"content": [
+										{
+											"id": 91,
+											"paragraph": "Hematite is hereby designated and named the official mineral of the State of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 52,
+									"displayId": "1-2-14",
+									"name": "Section 1-2-14",
+									"sortOrder": 14,
+									"description": "Official rock.",
+									"content": [
+										{
+											"id": 92,
+											"paragraph": "Marble is hereby designated and named the official rock of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 53,
+									"displayId": "1-2-8",
+									"name": "Section 1-2-8",
+									"sortOrder": 8,
+									"description": "State salt water fish.",
+									"content": [
+										{
+											"id": 84,
+											"paragraph": "The tarpon is hereby designated and named the official state salt water fish of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 54,
+									"displayId": "1-2-17",
+									"name": "Section 1-2-17",
+									"sortOrder": 17,
+									"description": "State game bird.",
+									"content": [
+										{
+											"id": 75,
+											"paragraph": "The wild turkey is hereby designated and named the official state game bird for the State of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 55,
+									"displayId": "1-2-18",
+									"name": "Section 1-2-18",
+									"sortOrder": 18,
+									"description": "State dance.",
+									"content": [
+										{
+											"id": 74,
+											"paragraph": "The dance known as the square dance is designated the American folk dance of the State of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 56,
+									"displayId": "1-2-19",
+									"name": "Section 1-2-19",
+									"sortOrder": 19,
+									"description": "State nut.",
+									"content": [
+										{
+											"id": 73,
+											"paragraph": "The pecan is designated as official state nut of the State of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 57,
+									"displayId": "1-2-34",
+									"name": "Section 1-2-34",
+									"sortOrder": 34,
+									"description": "State amphibian.",
+									"content": [
+										{
+											"id": 123,
+											"paragraph": "The Red Hills Salamander, Phaeognathus hubrichti Highton 1961, is hereby designated and named as the official state amphibian of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 58,
+									"displayId": "1-2-33",
+									"name": "Section 1-2-33",
+									"sortOrder": 33,
+									"description": "State outdoor musical drama.",
+									"content": [
+										{
+											"id": 124,
+											"paragraph": "\"The Incident at Looney's Tavern\" is designated as Alabama's Official Outdoor Musical Drama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 59,
+									"displayId": "1-2-32",
+									"name": "Section 1-2-32",
+									"sortOrder": 32,
+									"description": "State historic theatre.",
+									"content": [
+										{
+											"id": 125,
+											"paragraph": "The Alabama Theatre for the Performing Arts is designated as the official State Historic Theatre for the State of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 60,
+									"displayId": "1-2-31",
+									"name": "Section 1-2-31",
+									"sortOrder": 31,
+									"description": "State horseshoe tournament.",
+									"content": [
+										{
+											"id": 126,
+											"paragraph": "The annual fall horseshoe tournament in Stockton, Alabama, is hereby designated as the official championship horseshoe tournament for the State of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 61,
+									"displayId": "1-2-30",
+									"name": "Section 1-2-30",
+									"sortOrder": 30,
+									"description": "State agricultural museum.",
+									"content": [
+										{
+											"id": 127,
+											"paragraph": "The Dothan Landmarks Parks is hereby designated the official Agricultural Museum for the State of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 62,
+									"displayId": "1-2-29",
+									"name": "Section 1-2-29",
+									"sortOrder": 29,
+									"description": "State barbecue championship.",
+									"content": [
+										{
+											"id": 128,
+											"paragraph": "The Demopolis Christmas on the River Barbecue Cook-off is hereby designated as the official Alabama State Barbecue Championship.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 63,
+									"displayId": "1-2-28",
+									"name": "Section 1-2-28",
+									"sortOrder": 28,
+									"description": "State drama.",
+									"content": [
+										{
+											"id": 129,
+											"paragraph": "The drama by William Gibson, \"The Miracle Worker,\" which is performed annually on the grounds of Ivy Green, the birthplace of native Alabamian Helen Keller, is hereby designated as the official outdoor drama of the State of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 64,
+									"displayId": "1-2-27",
+									"name": "Section 1-2-27",
+									"sortOrder": 27,
+									"description": "State shell.",
+									"content": [
+										{
+											"id": 100,
+											"paragraph": "The Scaphella junonia johnstoneae is hereby designated as the official shell of the State of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 65,
+									"displayId": "1-2-26",
+									"name": "Section 1-2-26",
+									"sortOrder": 26,
+									"description": "State gemstone.",
+									"content": [
+										{
+											"id": 130,
+											"paragraph": "The Star Blue Quartz is designated as the official gemstone for the State of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 66,
+									"displayId": "1-2-25",
+									"name": "Section 1-2-25",
+									"sortOrder": 25,
+									"description": "State reptile.",
+									"content": [
+										{
+											"id": 99,
+											"paragraph": "In recognition of its occurrence in the State of Alabama only, Pseudemys alabamensis of the Family Emydidae and Order Testudines, or the Alabama red-bellied turtle, is hereby named and designated as the official reptile for the State of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 67,
+									"displayId": "1-2-24",
+									"name": "Section 1-2-24",
+									"sortOrder": 24,
+									"description": "State insect.",
+									"content": [
+										{
+											"id": 97,
+											"paragraph": "The monarch butterfly is hereby named and designated as the official insect for the State of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 68,
+									"displayId": "1-2-23",
+									"name": "Section 1-2-23",
+									"sortOrder": 23,
+									"description": "State butterfly.",
+									"content": [
+										{
+											"id": 68,
+											"paragraph": "The Eastern Tiger Swallowtail is hereby designated as the official mascot and butterfly of the State of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 69,
+									"displayId": "1-2-22",
+									"name": "Section 1-2-22",
+									"sortOrder": 22,
+									"description": "State championship horse show.",
+									"content": [
+										{
+											"id": 69,
+											"paragraph": "The Alabama State Championship Horse Show is hereby designated as the official state championship horse show of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 70,
+									"displayId": "1-2-21",
+									"name": "Section 1-2-21",
+									"sortOrder": 21,
+									"description": "State renaissance faire.",
+									"content": [
+										{
+											"id": 70,
+											"paragraph": "The annual renaissance faire in Florence, Alabama, is hereby named and designated as the official renaissance faire in the State of Alabama, and said city is now and shall remain as the permanent location of this event.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 71,
+									"displayId": "1-2-20",
+									"name": "Section 1-2-20",
+									"sortOrder": 20,
+									"description": "State fossil.",
+									"content": [
+										{
+											"id": 71,
+											"paragraph": "No fossil \"Species Basilosaurus Cetoides\" shall be removed from the State of Alabama, in whole or in part, except by prior written approval of the Governor.",
+											"sortOrder": 2
+										},
+										{
+											"id": 72,
+											"paragraph": "The Alabama Legislature does hereby designate as the official State of Alabama fossil the \"Species Basilosaurus Cetoides.\"",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 72,
+									"displayId": "1-2-36",
+									"name": "Section 1-2-36",
+									"sortOrder": 36,
+									"description": "State mammal.",
+									"content": [
+										{
+											"id": 121,
+											"paragraph": "The Black Bear, subfamily ursinae, Ursus americanus Pollas, 1780, is hereby designated as the official state mammal of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								}
+							]
+						},
+						{
+							"id": 2,
+							"name": "Chapter 1",
+							"description": "Construction of Code and Statutes.",
+							"sections": [
+								{
+									"id": 2,
+									"displayId": "1-1-4",
+									"name": "Section 1-1-4",
+									"sortOrder": 4,
+									"description": "Computation of time.",
+									"content": [
+										{
+											"id": 103,
+											"paragraph": "Time within which any act is provided by law to be done must be computed by excluding the first day and including the last. However, if the last day is Sunday, or a legal holiday as defined in Section 1-3-8, or a day on which the office in which the act must be done shall close as permitted by any law of this state, the last day also must be excluded, and the next succeeding secular or working day shall be counted as the last day within which the act may be done. In designating the hours of the day, the time used shall be that of the ninetieth degree of longitude west of Greenwich, otherwise known as central standard time; provided, that whenever daylight saving time shall be in effect within the state, the time used shall be that known as central daylight time.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 3,
+									"displayId": "1-1-5",
+									"name": "Section 1-1-5",
+									"sortOrder": 5,
+									"description": "Public offenses defined.",
+									"content": [
+										{
+											"id": 104,
+											"paragraph": "Repealed by Acts 1977, No. 607, p. 812, §9901, as amended, effective January 1, 1980.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 4,
+									"displayId": "1-1-6",
+									"name": "Section 1-1-6",
+									"sortOrder": 6,
+									"description": "Certain acts or omissions not public offenses.",
+									"content": [
+										{
+											"id": 105,
+											"paragraph": "Acts or omissions to which a pecuniary penalty is attached, recoverable by action by a person for his own use, or for the use, in whole or in part, of the state, or of a county or municipal corporation, are not public offenses within the meaning of this Code.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 5,
+									"displayId": "1-1-8",
+									"name": "Section 1-1-8",
+									"sortOrder": 7,
+									"description": "When penal acts take effect.",
+									"content": [
+										{
+											"id": 106,
+											"paragraph": "No penal act shall take effect until 60 days after the approval thereof, unless otherwise specially provided in the act.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 6,
+									"displayId": "1-1-9",
+									"name": "Section 1-1-9",
+									"sortOrder": 8,
+									"description": "Existing rights, remedies and defenses preserved.",
+									"content": [
+										{
+											"id": 107,
+											"paragraph": "This Code shall not affect any existing right, remedy or defense, nor shall it affect any prosecution now commenced, or which shall be hereafter commenced, for any offense already committed. As to all such cases, the laws in force at the adoption of this Code shall continue in force. But this section does not apply to changes in forms of remedy or defense, to rules of evidence, nor to provisions authorizing amendments of process, proceedings or pleadings in civil cases.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 7,
+									"displayId": "1-1-10",
+									"name": "Section 1-1-10",
+									"sortOrder": 9,
+									"description": "Repeal of uncodified statutes of public, general, and permanent nature; certain statutes saved from repeal.",
+									"content": [
+										{
+											"id": 108,
+											"paragraph": "Subject to the provisions of this section, or as may be otherwise provided in this Code, all statutes of a public, general and permanent nature, not included in this Code, are repealed. The foregoing provisions of this section shall not repeal, nor be construed to repeal, local, private or special statutes; nor statutes which relate to or apply to only one county, municipality, political subdivision, district or territory; nor statutes which apply to one or more counties, municipalities, political subdivisions, districts or territories on the basis of population; nor statutes in effect on the effective date of this Code which apply to one or more judicial circuits of the state, whether by specific reference thereto, or the basis of population or by some other method of identification or classification; nor statutes in effect on the effective date of this Code which establish the amount or rate of salary or compensation of any state officer or employee or any other person whose salary or compensation is paid, in whole or in part, by the state, or which establish minimum or maximum amounts of salary or compensation, or which provide additional compensation for the performance of specified services or duties; nor statutes relating to the swamp and overflowed lands; nor statutes relating to the public debt or authorizing the issuance of bonds or other evidence of indebtedness by the state or any county, municipality, political subdivision or agency thereof; nor statutes appropriating funds; nor any act submitting an amendment to the Constitution or any act to be effective upon the adoption of such an amendment to the Constitution; nor statutes becoming effective after the effective date of this Code.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 8,
+									"displayId": "1-1-3",
+									"name": "Section 1-1-3",
+									"sortOrder": 3,
+									"description": "\"Blind person\" defined; how blindness proved.",
+									"content": [
+										{
+											"id": 67,
+											"paragraph": "(a) As used in this Code or any statute of this state heretofore or hereafter enacted, unless the context requires a different meaning, the term \"blind person\" means a natural person who has no vision or whose vision with correcting glasses is so defective as to prevent the performance of ordinary activities for which eyesight is essential, or who has central visual acuity of 20/200 or less in the better eye with correcting glasses, or whose central visual acuity is more than 20/200 in the better eye with correcting glasses but whose peripheral field has contracted to such an extent that the widest diameter of the visual field subtends an angular distance no greater than 20 degrees.",
+											"sortOrder": 1
+										},
+										{
+											"id": 101,
+											"paragraph": "(b) The condition of blindness may be proved by a blind person claiming any rights or benefits provided under any statute of this state by certificate of a duly licensed ophthalmologist or optometrist.",
+											"sortOrder": 2
+										},
+										{
+											"id": 102,
+											"paragraph": "(c) Nothing herein contained shall prevent the Alabama State Department of Human Resources from establishing a different definition of blindness for use in determining eligibility for blind assistance under the program administered by it as provided for in Section 38-4-1, or from establishing procedures and qualifying personnel to determine the existence of blindness within such definition so established for such purpose or from reviewing any such determination so made to determine the correctness of such decision in its supervisory power in the administration of the blind assistance program.",
+											"sortOrder": 3
+										}
+									]
+								},
+								{
+									"id": 9,
+									"displayId": "1-1-11",
+									"name": "Section 1-1-11",
+									"sortOrder": 10,
+									"description": "Repealed laws not revived.",
+									"content": [
+										{
+											"id": 109,
+											"paragraph": "All laws and all statutes or parts of statutes which are repealed or abrogated by this Code, or are repugnant to any law repealed by this Code and which have not been reenacted or consolidated, shall continue to be so repealed or abrogated.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 10,
+									"displayId": "1-1-14",
+									"name": "Section 1-1-14",
+									"sortOrder": 12,
+									"description": "Classification and organization of Code; notes and catchlines of sections not part of law.",
+									"content": [
+										{
+											"id": 111,
+											"paragraph": "(a) The classification and organization of the titles, chapters, articles, divisions, subdivisions and sections of this Code, and the headings thereto, are made for the purpose of convenient reference and orderly arrangement, and no implication, inference or presumption of a legislative construction shall be drawn therefrom.",
+											"sortOrder": 1
+										},
+										{
+											"id": 112,
+											"paragraph": "(b) Unless otherwise provided in this Code, the descriptive headings or catchlines immediately preceding or within the text of the individual sections of this Code, except the section numbers included in the headings or catchlines immediately preceding the text of such sections, do not constitute part of the law, and shall in no manner limit or expand the construction of any such section. All historical citations and notes set out in this Code are given for the purpose of convenient reference, and do not constitute part of the law.",
+											"sortOrder": 2
+										}
+									]
+								},
+								{
+									"id": 11,
+									"displayId": "1-1-15",
+									"name": "Section 1-1-15",
+									"sortOrder": 13,
+									"description": "References to sections, titles, etc.",
+									"content": [
+										{
+											"id": 113,
+											"paragraph": "(a) Unless otherwise indicated in the context, references in this Code to titles, subtitles, chapters, articles, divisions, subdivisions or sections shall mean titles, subtitles, chapters, articles, divisions, subdivisions or sections of this Code.",
+											"sortOrder": 1
+										},
+										{
+											"id": 114,
+											"paragraph": "(b) Whenever any reference is made to any portion of this Code or any other law, the reference applies to all amendments thereto.",
+											"sortOrder": 2
+										}
+									]
+								},
+								{
+									"id": 12,
+									"displayId": "1-1-16",
+									"name": "Section 1-1-16",
+									"sortOrder": 14,
+									"description": "Severability of provisions of Code and statutes.",
+									"content": [
+										{
+											"id": 115,
+											"paragraph": "If any provision of this Code or any amendment hereto, or any other statute, or the application thereof to any person, thing or circumstances, is held invalid by a court of competent jurisdiction, such invalidity shall not affect the provisions or application of this Code or such amendment or statute that can be given effect without the invalid provisions or application, and to this end, the provisions of this Code and such amendments and statutes are declared to be severable.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 16,
+									"displayId": "1-1-13",
+									"name": "Section 1-1-13",
+									"sortOrder": 11,
+									"description": "Previous validating acts not repealed.",
+									"content": [
+										{
+											"id": 110,
+											"paragraph": "The omission from this Code of any acts heretofore passed which validated any bonds, notes, warrants, certificates or other evidences of indebtedness issued by any city, town, county, county board of education, city board of education or other political subdivision of the state shall in no way operate or be construed to repeal or destroy the effect of any and all of such validating acts where said validating acts have been otherwise lawfully passed and are not in conflict with the Constitution of the United States or the State of Alabama.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 17,
+									"displayId": "1-1-2",
+									"name": "Section 1-1-2",
+									"sortOrder": 2,
+									"description": "Tenses; gender; singular and plural; joint authority.",
+									"content": [
+										{
+											"id": 98,
+											"paragraph": "Words used in this Code in the past or present tense include the future, as well as the past and present. Words used in the masculine gender include the feminine and neuter. The singular includes the plural, and the plural the singular. All words giving a joint authority to three or more persons or officers give such authority to a majority of such persons or officers, unless it is otherwise declared.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 18,
+									"displayId": "1-1-1",
+									"name": "Section 1-1-1",
+									"sortOrder": 1,
+									"description": "Meaning of certain words and terms.",
+									"content": [
+										{
+											"id": 16,
+											"paragraph": "The following words, whenever they appear in this Code, shall have the signification attached to them in this section unless otherwise apparent from the context:",
+											"sortOrder": 1
+										},
+										{
+											"id": 17,
+											"paragraph": "(1) PERSON. The word \"person\" includes a corporation as well as a natural person.",
+											"sortOrder": 2
+										},
+										{
+											"id": 18,
+											"paragraph": "(2) WRITING. The word \"writing\" includes typewriting and printing on paper.",
+											"sortOrder": 3
+										},
+										{
+											"id": 19,
+											"paragraph": "(3) OATH. The word \"oath\" includes affirmation.",
+											"sortOrder": 4
+										},
+										{
+											"id": 20,
+											"paragraph": "(4) SIGNATURE or SUBSCRIPTION. The words \"signature\" or \"subscription\" include a mark when the person cannot write, if his name is written near the mark, and witnessed by a person who writes his own name as a witness, and include with respect to corporate securities facsimile signature placed upon any instrument or writing with intent to execute or authenticate such instrument or writing.",
+											"sortOrder": 5
+										},
+										{
+											"id": 21,
+											"paragraph": "(5) LUNATIC, INSANE or NON COMPOS MENTIS. The words \"lunatic\" or \"insane\" or the term \"non compos mentis\" include all persons of unsound mind.",
+											"sortOrder": 6
+										},
+										{
+											"id": 22,
+											"paragraph": "(6) PROPERTY. The word \"property\" includes both real and personal property.",
+											"sortOrder": 7
+										},
+										{
+											"id": 23,
+											"paragraph": "(7) REAL PROPERTY. The term \"real property\" includes lands, tenements and hereditaments.",
+											"sortOrder": 8
+										},
+										{
+											"id": 24,
+											"paragraph": "(8) PERSONAL PROPERTY. The term \"personal property\" includes money, goods, chattels, things in action and evidence of debt, deeds and conveyances.",
+											"sortOrder": 9
+										},
+										{
+											"id": 25,
+											"paragraph": "(9) CIRCUIT. The word \"circuit\" means judicial circuit.",
+											"sortOrder": 10
+										},
+										{
+											"id": 26,
+											"paragraph": "(10) PRECEDING. The word \"preceding\" means next before.",
+											"sortOrder": 11
+										},
+										{
+											"id": 27,
+											"paragraph": "(11) FOLLOWING. The word \"following\" means next after.",
+											"sortOrder": 12
+										},
+										{
+											"id": 28,
+											"paragraph": "(12) STATE. The word \"state,\" when applied to the different parts of the United States, includes the District of Columbia and the several territories of the United States.",
+											"sortOrder": 13
+										},
+										{
+											"id": 29,
+											"paragraph": "(13) UNITED STATES. The term \"United States\" includes the territories thereof and the District of Columbia.",
+											"sortOrder": 14
+										},
+										{
+											"id": 30,
+											"paragraph": "(14) JURY or JURIES. The words \"jury\" or \"juries\" include courts or judges in all cases when a jury trial is waived, or when the court or judge is authorized to ascertain and determine the facts as well as the law.",
+											"sortOrder": 15
+										},
+										{
+											"id": 32,
+											"paragraph": "(15) MONTH. The word \"month\" means a calendar month.",
+											"sortOrder": 16
+										},
+										{
+											"id": 66,
+											"paragraph": "(16) YEAR. The word \"year\" means a calendar year; but, whenever the word \"year\" is used in reference to any appropriations for the payment of money out of the treasury, it shall mean fiscal year.",
+											"sortOrder": 17
+										}
+									]
+								}
+							]
+						},
+						{
+							"id": 3,
+							"name": "Chapter 2A",
+							"description": "The Alabama State Flag Act.",
+							"sections": [
+								{
+									"id": 19,
+									"displayId": "1-2A-1",
+									"name": "Section 1-2A-1",
+									"sortOrder": 1,
+									"description": "Short title.",
+									"content": [
+										{
+											"id": 15,
+											"paragraph": "This chapter shall be known and may be cited as the \"Alabama State Flag Act.\"",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 28,
+									"displayId": "1-2A-8",
+									"name": "Section 1-2A-8",
+									"sortOrder": 8,
+									"description": "Municipal buildings.",
+									"content": [
+										{
+											"id": 60,
+											"paragraph": "(c) Any municipality with a population of 1,000 or less, according to the most recent federal decennial census, shall be exempt from this section unless other flags are being flown in the municipality by the municipality.",
+											"sortOrder": 3
+										},
+										{
+											"id": 61,
+											"paragraph": "(b) Unless otherwise acquired pursuant to gift, donation, or other means, the flags and flag poles required by this section shall be purchased by the applicable municipality within three years after August 1, 2001.",
+											"sortOrder": 2
+										},
+										{
+											"id": 62,
+											"paragraph": "(a) Each municipal building located in this state which is open to the general public and supported in whole or in part by public funds, shall prominently display the Alabama State Flag, in accordance with appropriate flag display protocol, on a flag pole or flag poles located near the main entrance of each building. ",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 29,
+									"displayId": "1-2A-7",
+									"name": "Section 1-2A-7",
+									"sortOrder": 7,
+									"description": "Department or agency facilities.",
+									"content": [
+										{
+											"id": 34,
+											"paragraph": "(a) Each facility or building located in this state that is affiliated with any department or agency of the state and supported in whole or in part by public funds, shall prominently display the Alabama State Flag, in accordance with appropriate flag display protocol, on a flag pole or flag poles located near the main entrance of each facility or building. Any facility or building that is not in public view or open to the general public, or is used only for storage or other warehouse purposes, may be exempt from the requirements of this section at the discretion of the director or chief official of the department or agency.",
+											"sortOrder": 1
+										},
+										{
+											"id": 63,
+											"paragraph": "(b) Unless otherwise acquired pursuant to gift, donation, or other means, the flags and flag poles required by this section shall be purchased by the applicable department or agency within three years after August 1, 2001.",
+											"sortOrder": 2
+										}
+									]
+								},
+								{
+									"id": 30,
+									"displayId": "1-2A-6",
+									"name": "Section 1-2A-6",
+									"sortOrder": 6,
+									"description": "State parks or historic sites.",
+									"content": [
+										{
+											"id": 33,
+											"paragraph": "(a) Each state park or historic site administrative building, which is located on park property and open to the general public, shall prominently display the Alabama State Flag, in accordance with appropriate flag display protocol, on a flag pole or flag poles located near the main entrance of each administrative building.",
+											"sortOrder": 1
+										},
+										{
+											"id": 64,
+											"paragraph": "(b) Unless otherwise acquired pursuant to gift, donation, or other means, the flags and flag poles required by this section shall be purchased by the applicable park or historic site within three years after August 1, 2001.",
+											"sortOrder": 2
+										}
+									]
+								},
+								{
+									"id": 31,
+									"displayId": "1-2A-5",
+									"name": "Section 1-2A-5",
+									"sortOrder": 5,
+									"description": "Law enforcement agencies.",
+									"content": [
+										{
+											"id": 2,
+											"paragraph": "(b) Unless otherwise acquired pursuant to gift, donation, or other means, the flags and flag poles required by this section shall be purchased by the applicable law enforcement agency within three years after August 1, 2001.",
+											"sortOrder": 2
+										},
+										{
+											"id": 3,
+											"paragraph": "(a) Each state, county, and municipal law enforcement agency headquarters, including the headquarters for state troopers, peace officers, marine police officers, and local police officers, shall prominently display the Alabama State Flag, in accordance with appropriate flag display protocol, on a flag pole or flag poles located near the main entrance of the building.",
+											"sortOrder": 1
+										},
+										{
+											"id": 31,
+											"paragraph": "(c) Any municipality with a population of 1,000 or less, according to the most recent federal decennial census, shall be exempt from this section unless other flags are being flown in the municipality by the municipality.",
+											"sortOrder": 3
+										}
+									]
+								},
+								{
+									"id": 32,
+									"displayId": "1-2A-4",
+									"name": "Section 1-2A-4",
+									"sortOrder": 4,
+									"description": "Courthouses.",
+									"content": [
+										{
+											"id": 4,
+											"paragraph": "(b) Unless otherwise acquired pursuant to gift, donation, or other means, the flags and flag poles required by this section shall be purchased by the county within three years after August 1, 2001.",
+											"sortOrder": 2
+										},
+										{
+											"id": 5,
+											"paragraph": "(a) Each county courthouse and courthouse annex in which a court sits on a regular basis shall prominently display the Alabama State Flag, in accordance with appropriate flag display protocol, on a flag pole or flag poles located near the main entrance of the courthouse and the courthouse annex. If the main entrance of a courthouse annex is clearly visible from the main entrance of the courthouse, or if the courthouse and courthouse annex are attached, the flag may be located near the main entrance of the courthouse only.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 33,
+									"displayId": "1-2A-3",
+									"name": "Section 1-2A-3",
+									"sortOrder": 3,
+									"description": "Flag display protocol.",
+									"content": [
+										{
+											"id": 6,
+											"paragraph": "For purposes of this chapter and any other provision of general law, appropriate flag display protocol shall expressly include, but not be limited to, the requirement that when flown on the same pole, the order of placement from top to bottom shall be the United States flag, the state flag, and other flags.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 34,
+									"displayId": "1-2A-2",
+									"name": "Section 1-2A-2",
+									"sortOrder": 2,
+									"description": "Historical information.",
+									"content": [
+										{
+											"id": 7,
+											"paragraph": "\"Flag of Alabama I salute thee. To thee I pledge my allegiance, my service, and my life.\"",
+											"sortOrder": 8
+										},
+										{
+											"id": 8,
+											"paragraph": "The salute to the Alabama State Flag provides:",
+											"sortOrder": 7
+										},
+										{
+											"id": 9,
+											"paragraph": "Currently, Alabama law requires the display of the Alabama State Flag at all schools supported by public funds when school is in session. The State Superintendent of Education has determined that the Alabama State Flag must be hoisted on a pole to be appropriately displayed at school buildings.",
+											"sortOrder": 6
+										},
+										{
+											"id": 10,
+											"paragraph": "The St. Andrew's Cross resembles the letter \"X\" in the English alphabet and is also referred to as the \"saltier\" or \"Crux Decussata.\" According to tradition, Andrew, the brother of Peter, was crucified on a cross of this shape. Andrew did not feel worthy enough to die on the same style of cross on which Christ died and requested a cross of another shape. His request was granted and he was crucified upside down on a cross which now bears his name. Rather than using nails to secure his limbs to the cross, Andrew was bound to the cross with ropes. His suffering was thus prolonged. St. Andrew's Cross came into wide use during the Medieval Period and became the national cross of Scotland, since St. Andrew was the patron saint of Scotland.",
+											"sortOrder": 5
+										},
+										{
+											"id": 11,
+											"paragraph": "\"The flag of the state of Alabama shall be a crimson cross of St. Andrew on a field of white. The bars forming the cross shall be not less than six inches broad, and must extend diagonally across the flag from side to side.\"",
+											"sortOrder": 4
+										},
+										{
+											"id": 12,
+											"paragraph": "The Alabama State Flag as it exists today was adopted on February 16, 1895, pursuant to Act No. 383 of the 1895 Legislature of Alabama (Acts 1894-1895, p. 719), which is codified as Section 1-2-5. Section 1-2-5 provides: ",
+											"sortOrder": 3
+										},
+										{
+											"id": 13,
+											"paragraph": "From April 1865 until 1895, the State of Alabama flew the United States Flag during all official occasions.",
+											"sortOrder": 2
+										},
+										{
+											"id": 14,
+											"paragraph": "The Legislature finds it is appropriate to include within this chapter general history and related information concerning the state flag. The state did not have a flag from 1819 to January 11, 1861, when a resolution was passed designating a flag designed by a group of Montgomery women as the \"Republic of Alabama Flag.\" One side of this flag displayed, under an arch bearing the words \"Independent Now and Forever,\" the Goddess of Liberty holding in her right hand an unsheathed sword and in her left hand a small flag with one star. Displayed on the reverse side of this flag were a large cotton plant in full fruit and flower, a coiled rattlesnake, and the Latin words \"Noli Me Tangere\" (Touch Me Not) beneath the cotton plant. This flag, which flew for about a month, was removed to the Governor's office on February 10, 1861, apparently suffering damage caused by severe weather. The Republic of Alabama Flag was never flown again.",
+											"sortOrder": 1
+										}
+									]
+								}
+							]
+						},
+						{
+							"id": 4,
+							"name": "Chapter 2B",
+							"description": "Displays on Public Property",
+							"sections": [
+								{
+									"id": 26,
+									"displayId": "2",
+									"name": "Article 2",
+									"sortOrder": 2,
+									"description": "National Motto \"In God We Trust\" Act",
+									"content": []
+								},
+								{
+									"id": 27,
+									"displayId": "1",
+									"name": "Article 1",
+									"sortOrder": 1,
+									"description": "Display of POW-MIA Flag on State Owned Buildings and State Parks",
+									"content": []
+								}
+							]
+						},
+						{
+							"id": 5,
+							"name": "Chapter 3",
+							"description": "Miscellaneous Provisions.",
+							"sections": [
+								{
+									"id": 20,
+									"displayId": "1-3-6",
+									"name": "Section 1-3-6",
+									"sortOrder": 6,
+									"description": "Fees of certain county and city officials to be paid into local treasury.",
+									"content": [
+										{
+											"id": 52,
+											"paragraph": "In all counties and cities where officials are paid on a salary basis instead of a fee basis, all fees required under the terms of this Code to be paid to or collected by such officials shall be paid by said officials into the treasury of the county or municipality or to the official performing the duties of county treasurer or municipal treasurer except as otherwise provided by law.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 21,
+									"displayId": "1-3-5",
+									"name": "Section 1-3-5",
+									"sortOrder": 5,
+									"description": "Reclassification date.",
+									"content": [
+										{
+											"id": 53,
+											"paragraph": "The one hundred twentieth day after the first day of the first regular legislative session held next after the publication by the federal government of the regular federal decennial population census for Alabama is hereby fixed as the date for any reclassification under any law requiring classification based on such said census. The provisions of this section shall not apply to any law which provides for the levying or collection of license taxes on a population basis or the distribution of state and county collected or administered revenue or funds on a population basis, and the population as disclosed by any federal decennial census, as soon as the same is proclaimed, published or certified by the Director of the United States Census Bureau, shall be used in administering any such law.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 22,
+									"displayId": "1-3-4",
+									"name": "Section 1-3-4",
+									"sortOrder": 4,
+									"description": "Fiscal year of state.",
+									"content": [
+										{
+											"id": 54,
+											"paragraph": "The fiscal year of the government shall commence on the first day of October and end on the thirtieth day of September. This fiscal year shall be used for purposes of making appropriations and of financial reporting and shall be uniformly adopted by all departments, institutions, bureaus, boards, commissions and other state agencies.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 23,
+									"displayId": "1-3-3",
+									"name": "Section 1-3-3",
+									"sortOrder": 3,
+									"description": "Execution of bonds, warrants, notes, etc., with facsimile signatures and seals.",
+									"content": [
+										{
+											"id": 55,
+											"paragraph": "(c) This section shall not be construed to repeal any other law authorizing the execution with facsimile signatures of, or the reproduction of facsimile seals on, bonds, warrants, notes or certificates for the payment of money.",
+											"sortOrder": 3
+										},
+										{
+											"id": 56,
+											"paragraph": "(b) Notwithstanding the fact that, prior to delivery of any bond, warrant, note or certificate executed as provided in the preceding subsection, any of the officers whose signatures appear thereon should cease to hold office, such instrument shall be valid to the same extent as if the officers whose signatures appear thereon were serving as such officers at the time of such delivery.",
+											"sortOrder": 2
+										},
+										{
+											"id": 57,
+											"paragraph": "(a) In any instance where any bond, warrant, note or certificate is issued by any county, municipality, board of education or public corporation in this state and is required or permitted to be executed or attested by more than one person, a facsimile of the signature of any one or more of the persons or officers executing or attesting the same may be imprinted or otherwise reproduced on such instrument; provided, that at least one signature so required shall be manually subscribed thereon. In any instance where any interest coupons are attached to any such bond, warrant, note or certificate in evidence of installments of interest payable thereon, a facsimile of any or all of the signatures required or permitted thereon may be imprinted or otherwise reproduced thereon, and it shall not be necessary that any signature be manually inscribed on any such interest coupon. Any signature required or permitted to be placed on any such instrument for the purpose of attesting or authenticating the same, or certifying to the registration or validation thereof, or certifying to any other matter pertaining thereto, may be imprinted or otherwise reproduced thereon in facsimile, and it shall not be necessary that such signature be manually inscribed thereon. Any seal required or permitted to be affixed or impressed on any such instrument may be imprinted or otherwise reproduced thereon in facsimile.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 24,
+									"displayId": "1-3-2",
+									"name": "Section 1-3-2",
+									"sortOrder": 2,
+									"description": "When undertaking without seal sufficient.",
+									"content": [
+										{
+											"id": 58,
+											"paragraph": "When by law a bond is required, an undertaking without seal is sufficient, and must be taken in all respects as if the same were a sealed instrument.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 25,
+									"displayId": "1-3-1",
+									"name": "Section 1-3-1",
+									"sortOrder": 1,
+									"description": "Common law of England adopted.",
+									"content": [
+										{
+											"id": 59,
+											"paragraph": "The common law of England, so far as it is not inconsistent with the Constitution, laws and institutions of this state, shall, together with such institutions and laws, be the rule of decisions, and shall continue in force, except as from time to time it may be altered or repealed by the Legislature.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 36,
+									"displayId": "1-3-7",
+									"name": "Section 1-3-7",
+									"sortOrder": 7,
+									"description": "Notice, etc., required to be served by registered mail may be served by certified mail.",
+									"content": [
+										{
+											"id": 51,
+											"paragraph": "In any case or matter in which the giving or serving of any notice, subpoena, citation or other writing by registered mail is authorized or required by law, such notice, subpoena, citation or other writing may be given or served by certified mail in lieu of registered mail. The person mailing such notices, subpoenas, citations or other writings shall stipulate that the delivery thereof shall be limited to the addressee only in those instances in which the law requires such limited delivery when service is by registered mail and shall demand a \"return receipt\" in those instances in which the law requires a \"return receipt\" when service is by registered mail. Whenever any statute authorizes or requires giving or serving any notice, subpoena, citation or other writing by registered mail, such statute shall be construed to authorize such giving or serving thereof also by certified mail.",
+											"sortOrder": 1
+										}
+									]
+								},
+								{
+									"id": 73,
+									"displayId": "1-3-8",
+									"name": "Section 1-3-8",
+									"sortOrder": 8,
+									"description": "Holidays enumerated; personal leave days; state holidays observed by closing of state offices; compensatory leave days.",
+									"content": [
+										{
+											"id": 35,
+											"paragraph": "(f) Each employee shall attempt to schedule any compensatory leave day provided in lieu of a regularly scheduled holiday, subject to the approval of the supervisor, during the quarter that the regularly scheduled holiday occurred. If any compensatory leave day cannot be scheduled during the designated quarter, the compensatory leave day may be accumulated at the request of the employee for up to one year. Supervisors failing to schedule compensatory leave days for employees within the quarter, unless the day is carried forward at the request of the employee, shall justify that action in writing to the Director of State Personnel and the employee shall receive pay at a rate not less than the employee's usual and customary rate of pay for any compensatory leave day to which the employee may be entitled and which has not been taken.",
+											"sortOrder": 16
+										},
+										{
+											"id": 36,
+											"paragraph": "(e) All state holidays shall be observed by the closing of all state offices. Any state office may remain open on a state holiday upon written notice by the appointing authority to the State Personnel Board at least 60 days in advance of the holiday. Provided, that any state office may be opened in the event of an emergency and the State Personnel Board may grant a blanket approval for the openings of state offices needing to be open on holidays on a regular basis for essential services. Any state employee working on a state holiday shall receive a day of compensatory leave or paid compensation in lieu of the holiday as provided herein.",
+											"sortOrder": 15
+										},
+										{
+											"id": 37,
+											"paragraph": "(d) In addition to the legal holidays provided above all state employees, except those employed in Baldwin and Mobile Counties, shall be granted one personal leave day per year. The personal leave day shall be granted on January 1 of each year. All state employees employed in Baldwin and Mobile Counties shall be granted no personal leave day. All such personal leave days granted in any year shall be used by the end of the calendar year. All such personal leave days shall be scheduled during the year with the approval of the supervisor. Supervisors failing to schedule personal leave days for employees shall justify that action in writing to the Director of State Personnel and the employee shall receive pay at a rate not less than the employee's usual and customary rate of pay for any personal leave day not taken by December 31 of each year.",
+											"sortOrder": 14
+										},
+										{
+											"id": 38,
+											"paragraph": "(c) In addition to the legal holidays provided above, Mardi Gras shall be deemed a holiday in Mobile and Baldwin Counties and all state offices shall be closed in those counties on Mardi Gras.",
+											"sortOrder": 13
+										},
+										{
+											"id": 39,
+											"paragraph": "(10) American Indian Heritage Day - the second Monday in October.",
+											"sortOrder": 12
+										},
+										{
+											"id": 40,
+											"paragraph": "(9) Thomas Jefferson's birthday - the third Monday in February.",
+											"sortOrder": 11
+										},
+										{
+											"id": 41,
+											"paragraph": "(8) National Memorial Day - the last Monday in May.",
+											"sortOrder": 10
+										},
+										{
+											"id": 42,
+											"paragraph": "(7) Martin Luther King, Jr.'s birthday - the third Monday in January.",
+											"sortOrder": 9
+										},
+										{
+											"id": 43,
+											"paragraph": "(6) Veterans' Day - the eleventh day of November. ",
+											"sortOrder": 8
+										},
+										{
+											"id": 44,
+											"paragraph": "(5) Columbus Day and Fraternal Day - the second Monday in October.",
+											"sortOrder": 7
+										},
+										{
+											"id": 45,
+											"paragraph": "(4) Jefferson Davis' birthday - the first Monday in June.",
+											"sortOrder": 6
+										},
+										{
+											"id": 46,
+											"paragraph": "(3) Confederate Memorial Day - the fourth Monday in April.",
+											"sortOrder": 5
+										},
+										{
+											"id": 47,
+											"paragraph": "(2) George Washington's birthday - the third Monday in February.",
+											"sortOrder": 4
+										},
+										{
+											"id": 48,
+											"paragraph": "(1) Robert E. Lee's birthday - the third Monday in January.",
+											"sortOrder": 3
+										},
+										{
+											"id": 49,
+											"paragraph": "(b) Of the above enumerated legal public holidays, the following shall be observed on the dates herein prescribed:",
+											"sortOrder": 2
+										},
+										{
+											"id": 50,
+											"paragraph": "(a) Sunday, Christmas Day, New Year's Day, Martin Luther King, Jr.'s birthday, Robert E. Lee's birthday, George Washington's birthday, Thomas Jefferson's birthday, Confederate Memorial Day, National Memorial Day, Jefferson Davis' birthday, the Fourth day of July, Labor Day, Columbus Day and Fraternal Day, Veterans' Day, American Indian Heritage Day, and the day designated by the Governor for public thanksgiving shall each be deemed a holiday. If any holiday falls on Sunday, the following day is the holiday. If any holiday falls on Saturday, the preceding day is the holiday. Veterans' Day shall be observed by the closing of all state, county, and municipal offices, all banks located within this state, and the public schools on such day. Public schools, grades K to 12, inclusive, and all public two-year institutions of higher education shall also be closed on National Memorial Day, and such closing shall be applicable to all students and non-essential employees. The Superintendent of Banks, with the concurrence of not less than two members of the state Banking Board, may authorize any state bank to close on National Memorial Day, the last Monday in May, and on such other days as may be declared by the Governor to be state holidays in honor of a special event. If any authorized state holiday falls on Friday, the Superintendent of Banks may authorize the Saturday following that Friday to be a holiday. The superintendent may also authorize the closing of banks at 12:00 noon on the day prior to Christmas Day, and the day prior to New Year's Day, if such days fall on business days.",
+											"sortOrder": 1
+										},
+										{
+											"id": 65,
+											"paragraph": "(g)(1) The first day in December of each year is designated as Mrs. Rosa L. Parks Day in this state. All citizens of this state are requested to devote some portion of Mrs. Rosa L. Parks Day to commemorate the accomplishments of Mrs. Rosa L. Parks, a woman of great courage, vision, love, and faith who helped usher in the modern civil rights movement on December 1, 1955, by refusing to give up her seat on a bus in Montgomery, Alabama. Each resident of this state is requested to observe the day with appropriate activities.",
+											"sortOrder": 17
+										},
+										{
+											"id": 131,
+											"paragraph": "(2) Each county and municipality may elect to observe Mrs. Rosa L. Parks Day as a holiday.",
+											"sortOrder": 18
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	}
+}
