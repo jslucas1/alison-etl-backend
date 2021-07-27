@@ -12,6 +12,7 @@
 							"id": 1,
 							"name": "Chapter 2",
 							"description": "State Symbols and Honors.",
+							"sortOrder": 2,
 							"sections": [
 								{
 									"id": 1,
@@ -628,6 +629,7 @@
 							"id": 2,
 							"name": "Chapter 1",
 							"description": "Construction of Code and Statutes.",
+							"sortOrder": 1,
 							"sections": [
 								{
 									"id": 2,
@@ -931,6 +933,7 @@
 							"id": 3,
 							"name": "Chapter 2A",
 							"description": "The Alabama State Flag Act.",
+							"sortOrder": 3,
 							"sections": [
 								{
 									"id": 19,
@@ -1120,6 +1123,7 @@
 							"id": 4,
 							"name": "Chapter 2B",
 							"description": "Displays on Public Property",
+							"sortOrder": 4,
 							"sections": [
 								{
 									"id": 26,
@@ -1143,6 +1147,7 @@
 							"id": 5,
 							"name": "Chapter 3",
 							"description": "Miscellaneous Provisions.",
+							"sortOrder": 5,
 							"sections": [
 								{
 									"id": 20,
