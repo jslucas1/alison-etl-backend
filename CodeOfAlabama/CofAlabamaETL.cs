@@ -28,7 +28,7 @@ namespace etl.CodeOfAlabama
 
         public bool ShouldRun()
         {
-            string stm = "select * from `alison-etl`.Pipeline where name = \"CodeOfAlabama\"";
+            string stm = "select * from `alison-etl`.Pipeline where Name = \"CodeOfAlabama\"";
             List<ExpandoObject> pipelines = new();
 
             try
@@ -36,9 +36,11 @@ namespace etl.CodeOfAlabama
                 this.db.Open();
                 pipelines = this.db.Select(stm);
                 this.db.Close();
+                Console.WriteLine("Closed the database");
             }
-            catch
+            catch(Exception e)
             {
+                Console.WriteLine(e.Message );
                 return false;
             }
 
@@ -93,7 +95,8 @@ namespace etl.CodeOfAlabama
 
             db.StoredProc("InsertWarehouseCofAlabama"); // Insert new records in LINX table not in Warehouse Table
 
-            db.StoredProc("DeleteWarehouseCofAlabama"); // Delete records in Warehouse that is not in LINX table
+            //Can never delete multilayer data.  
+            //db.StoredProc("DeleteWarehouseCofAlabama"); // Delete records in Warehouse that is not in LINX table
 
             db.StoredProc("UpdateWarehouseCofAlabama"); // Update records in Warehouse based on data in LINX table
 
@@ -106,42 +109,60 @@ namespace etl.CodeOfAlabama
 
         public void LoadLinxTable(List<ExpandoObject> linxData)
         {
-            string stm = "INSERT INTO `alison-etl`.LINXCodeOfAlabama";
-            stm += "      (LinxId, TitleId, TitleName, TitleDescription, TitleSortOrder, ";
-            stm += "      ChapterId, ChapterName, ChapterSortOrder, ChapterDescription, ";
-            stm += "      SectionId, SectionDisplayId, SectionName, SectionSortOrder, SectionDescription, ";
-            stm += "      ContentId, ContentParagraph, ContentSortOrder)";
-            stm += "      VALUES (@LinxId, @TitleId, @TitleName, @TitleDescription, @TitleSortOrder, ";
-            stm += "      @ChapterId, @ChapterName, @ChapterSortOrder, @ChapterDescription, ";
-            stm += "      @SectionId, @SectionDisplayId, @SectionName, @SectionSortOrder, @SectionDescription, ";
-            stm += "      @ContentId, @ContentParagraph, @ContentSortOrder)";
+            //The following is old and will be deleted once the new version is tested
+            // string stm = "INSERT INTO `alison-etl`.LINXCodeOfAlabama";
+            // stm += "      (LinxId, TitleId, TitleName, TitleDescription, TitleSortOrder, ";
+            // stm += "      ChapterId, ChapterName, ChapterSortOrder, ChapterDescription, ";
+            // stm += "      SectionId, SectionDisplayId, SectionName, SectionSortOrder, SectionDescription, ";
+            // stm += "      ContentId, ContentParagraph, ContentSortOrder)";
+            // stm += "      VALUES (@LinxId, @TitleId, @TitleName, @TitleDescription, @TitleSortOrder, ";
+            // stm += "      @ChapterId, @ChapterName, @ChapterSortOrder, @ChapterDescription, ";
+            // stm += "      @SectionId, @SectionDisplayId, @SectionName, @SectionSortOrder, @SectionDescription, ";
+            // stm += "      @ContentId, @ContentParagraph, @ContentSortOrder)";
 
-            linxData = DenormalizeData(linxData);
+            // linxData = DenormalizeData(linxData);
 
-            foreach (dynamic item in linxData)
-            {
-                var values = new Dictionary<string, object>()
-                {
-                    {"@LinxId", item.id},
-                    {"@TitleId", item.titleId},
-                    {"@TitleName", item.titleName},
-                    {"@TitleDescription", item.titleDescription},
-                    {"@TitleSortOrder", item.titleSortOrder},
-                    {"@ChapterId", item.chapterId},
-                    {"@ChapterName", item.chapterName},
-                    {"@ChapterSortOrder", item.chapterSortOrder},
-                    {"@ChapterDescription", item.chapterDescription},
-                    {"@SectionId", item.sectionId},
-                    {"@SectionDisplayId", item.sectionDisplayId},
-                    {"@SectionName", item.sectionName},
-                    {"@SectionSortOrder", item.sectionSortOrder},
-                    {"@SectionDescription", item.sectionDescription},
-                    {"@ContentId", item.contentId},
-                    {"@ContentParagraph", item.contentParagraph},
-                    {"@ContentSortOrder", item.contentSortOrder}
-                };
-                db.Insert(stm, values);
+            // foreach (dynamic item in linxData)
+            // {
+            //     var values = new Dictionary<string, object>()
+            //     {
+            //         {"@LinxId", item.id},
+            //         {"@TitleId", item.titleId},
+            //         {"@TitleName", item.titleName},
+            //         {"@TitleDescription", item.titleDescription},
+            //         {"@TitleSortOrder", item.titleSortOrder},
+            //         {"@ChapterId", item.chapterId},
+            //         {"@ChapterName", item.chapterName},
+            //         {"@ChapterSortOrder", item.chapterSortOrder},
+            //         {"@ChapterDescription", item.chapterDescription},
+            //         {"@SectionId", item.sectionId},
+            //         {"@SectionDisplayId", item.sectionDisplayId},
+            //         {"@SectionName", item.sectionName},
+            //         {"@SectionSortOrder", item.sectionSortOrder},
+            //         {"@SectionDescription", item.sectionDescription},
+            //         {"@ContentId", item.contentId},
+            //         {"@ContentParagraph", item.contentParagraph},
+            //         {"@ContentSortOrder", item.contentSortOrder}
+            //     };
+            //     db.Insert(stm, values);
+            // }
+
+            // New Multilayer Data Approach
+            string stm = "INSERT INTO `alison-etl`.LINXMultiLayerData";
+            stm += "      (@LinxId, @JsonData)";
+
+            string jsonData = "";
+            foreach(dynamic row in linxData){
+                jsonData += row;
             }
+            Console.WriteLine(jsonData);
+
+            var values = new Dictionary<string, object>()
+                 {
+                     {"@LinxId", "CodeOfAlabama"},
+                     {"@JsonData", jsonData}
+                 };
+            db.Insert(stm, values);
         }
 
         private List<ExpandoObject> DenormalizeData(List<ExpandoObject> linxData)
@@ -204,6 +225,7 @@ namespace etl.CodeOfAlabama
 
             StreamReader inFile = new StreamReader(filePath);
             string json = inFile.ReadToEnd();
+
             List<ExpandoObject> linxData = JsonConvert.DeserializeObject<List<ExpandoObject>>(json);
 
             return linxData;
