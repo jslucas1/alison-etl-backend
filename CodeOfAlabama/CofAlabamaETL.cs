@@ -20,6 +20,7 @@ namespace etl.CodeOfAlabama
         private Database db;
         private int pipelineId;
         private string dtFormat = "yyyy-MM-dd HH:mm:ss";
+        private string linxJson;
 
         public CofAlabamaETL()
         {
@@ -149,18 +150,15 @@ namespace etl.CodeOfAlabama
 
             // New Multilayer Data Approach
             string stm = "INSERT INTO `alison-etl`.LINXMultiLayerData";
-            stm += "      (@LinxId, @JsonData)";
+            stm += "      (LinxId, JsonData)";
+            stm += "      VALUES (@LinxId, @JsonData)";
 
-            string jsonData = "";
-            foreach(dynamic row in linxData){
-                jsonData += row;
-            }
-            Console.WriteLine(jsonData);
+            Console.WriteLine(linxJson);
 
             var values = new Dictionary<string, object>()
                  {
                      {"@LinxId", "CodeOfAlabama"},
-                     {"@JsonData", jsonData}
+                     {"@JsonData", linxJson}
                  };
             db.Insert(stm, values);
         }
@@ -225,6 +223,7 @@ namespace etl.CodeOfAlabama
 
             StreamReader inFile = new StreamReader(filePath);
             string json = inFile.ReadToEnd();
+            linxJson = json;
 
             List<ExpandoObject> linxData = JsonConvert.DeserializeObject<List<ExpandoObject>>(json);
 
